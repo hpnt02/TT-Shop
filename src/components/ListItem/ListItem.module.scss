@@ -1,0 +1,89 @@
+.card-item {
+    display: flex;
+     justify-content: center;
+    flex-wrap: wrap; 
+}
+
+.name-Product{
+    height: 40px;
+}
+
+.name-Product span{
+    font-size: 14px;
+    font-weight: 600;
+    &:hover{
+        color: var(--primary)
+    }
+}
+
+.order-item button{
+    width: 100%
+}
+
+.price-Product{
+    display: flex;
+    align-items: center;
+    margin-top: 10px;
+}
+
+.price-old{
+    font-size: 16px;
+    color: #666;
+    text-decoration: line-through;
+}
+
+.price-current{
+    color: red;
+    font-size: 18px;
+    margin-left: 10px;
+    font-weight: 600;
+}
+
+
+.sale-off{
+    position: absolute;
+    right:-1px;
+    top: -1px;
+    width: 82px;
+    height: 60px;
+    text-align: center;
+    background-color: rgba(255, 216, 64, 0.94);
+    border-top-right-radius: 2px;
+}
+
+.sale-off::after{
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: -11px;
+    border-width: 0 41px 11px;
+    border-style: solid;
+    border-color:transparent rgba(255, 216, 64, 0.94) transparent rgba(255, 216, 64, 0.94);
+}
+.sale-off-percent{
+    color: #EE4D2D;
+    font-weight: 600;
+    font-size: 22px;
+    line-height: 1.2rem;
+    position: relative;
+    top: 8px;
+}
+
+.sale-off-label{
+    color: white;
+    font-size: 25px;
+    line-height: 2.3rem;
+    position: relative;
+    top: 6px;
+    font-weight: 600;
+}
+
+.no-data{
+    width: 100%
+}
+
+.no-data h2{
+    text-align: center;
+    font-style: italic;
+    color: rgba(187, 179, 179, 0.966);
+}

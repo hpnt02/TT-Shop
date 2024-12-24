@@ -1,0 +1,120 @@
+.wrapper {
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 1.6rem;
+    font-family: var(--font-family);
+    font-weight: 700;
+    padding: 9px 16px;
+    border-radius: 4px;
+    background-color: var(--white);
+    border: 1px solid transparent;
+    cursor: pointer;
+    user-select: none;
+  min-width: 150px;
+    + .wrapper {
+        margin-left: 8px;
+    }
+
+    &.disabled {
+        pointer-events: none;
+        opacity: 0.5;
+    }
+}
+
+.icon + title,
+.title + .icon {
+    margin-left: 8px;
+}
+
+.icon {
+    display: inline-block;
+    width: 20px;
+    padding-right: 25px;
+}
+
+.primary {
+    font-size: 17px;
+    border-radius: 20px;
+    padding: 10px 10px;
+    color: var( --primary);
+    border: 1px solid var( --primary);
+    background-color: white; // Màu nền ban đầu
+    z-index: 9;
+    position: relative;
+    overflow: hidden; // Đảm bảo không có tràn ra ngoài
+    margin-top: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    &::after {
+      content: ''; // Thêm nội dung rỗng
+      width: 300%; // Đặt độ rộng lớn hơn phần tử
+      height: 300%; // Đặt chiều cao lớn hơn phần tử
+      background-color: white; // Màu sắc của đường kẻ
+      position: absolute; // Đặt vị trí tuyệt đối
+      top: 50%; // Căn giữa theo chiều dọc
+      left: 50%; // Căn giữa theo chiều ngang
+      border-radius: 50%; // Tạo hình tròn
+      transform: translate(-50%, -50%) scale(1); // Bắt đầu từ kích thước lớn
+      transition: transform 1s ease, background-color 1s ease; // Thêm hiệu ứng chuyển tiếp
+      z-index: -1; // Đặt dưới nội dung
+    }
+  
+    &:hover {
+      color: rgba(46, 41, 40, 1);
+      background-color: rgba(242, 242, 70,1); // Chuyển sang màu vàng khi hover
+      border: 1px solid black;
+      transition: transform 1s ease, color 1s ease;
+        cursor: pointer;
+      &::after {
+        transform: translate(-50%, -50%) scale(0); // Thu nhỏ về 0 khi hover
+      }
+    }
+}
+
+
+
+.order {
+  font-size: 17px;
+  border-radius: 20px;
+  padding: 10px 10px;
+  color: var( --primary);
+  border: 1px solid var( --primary);
+  background-color: white; // Màu nền ban đầu
+  z-index: 9999;
+  position: relative;
+  overflow: hidden; // Đảm bảo không có tràn ra ngoài
+  margin-top: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  &::after {
+    content: ''; // Thêm nội dung rỗng
+    width: 300%; // Đặt độ rộng lớn hơn phần tử
+    height: 300%; // Đặt chiều cao lớn hơn phần tử
+    background-color: white; // Màu sắc của đường kẻ
+    position: absolute; // Đặt vị trí tuyệt đối
+    top: 50%; // Căn giữa theo chiều dọc
+    left: 50%; // Căn giữa theo chiều ngang
+    border-radius: 50%; // Tạo hình tròn
+    transform: translate(-50%, -50%) scale(1); // Bắt đầu từ kích thước lớn
+    transition: transform 1s ease, background-color 1s ease; // Thêm hiệu ứng chuyển tiếp
+    z-index: -1; // Đặt dưới nội dung
+  }
+
+  &:hover {
+    color: rgba(46, 41, 40, 1);
+    background-color: rgba(242, 242, 70,1); // Chuyển sang màu vàng khi hover
+    border: 1px solid black;
+    transition: transform 1s ease, color 1s ease;
+      cursor: pointer;
+    &::after {
+      transform: translate(-50%, -50%) scale(0); // Thu nhỏ về 0 khi hover
+    }
+  }
+}
+
+.w100{
+  width: 100%;
+}

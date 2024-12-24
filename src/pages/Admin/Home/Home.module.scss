@@ -1,0 +1,41 @@
+.card-item {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap; /* Cho phép tự động xuống dòng */
+    gap: 16px; /* Khoảng cách giữa các item */
+}
+.table-Kh,
+.chart{
+    display: flex;
+    flex-wrap: wrap; /* Cho phép tự động xuống dòng */
+    gap: 16px; /* Khoảng cách giữa các item */
+    justify-content: space-between;
+}
+
+
+.chart-DT{
+    margin-top: 20px;
+    width: 49%;
+    border: 2px solid #aba7a7;
+    background-color: white;
+    border-radius: 10px;
+}
+
+.chart-DT canvas{
+    display: flex;
+    height: 400px !important;
+}
+
+.table-home{
+    margin-top: 20px;
+}
+
+.table-infor_KH{
+    margin-top: 20px;
+    width: 49%;
+    background-color: white;
+    border-radius: 10px;
+}
+th{
+    background-color: red;
+}

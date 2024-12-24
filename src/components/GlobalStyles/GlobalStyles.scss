@@ -1,0 +1,116 @@
+@import 'normalize.css';
+
+:root {
+    --primary: #EFC65A;
+    --black: #000;
+    --text-color: #333;
+    --white: white;
+    --default-layout-header-height: 60px;
+    --default-layout-width: 1000px;
+    --default-layout-horizontal-spacer: 24px;
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+html {
+    font-size: 62.5%;
+}
+
+body {
+    font-family:sans-serif;
+    font-optical-sizing: auto;
+    font-size: 1.6rem;
+    line-height: 1.5;
+    text-rendering: optimizeSpeed;
+    color: var(--text-color);
+    overflow-y: overlay;
+    background-color: #dcecf1
+}
+//Scrollbar CSS
+
+html *::-webkit-scrollbar {
+    border-radius: 0;
+    width: 8px;
+}
+
+html *::-webkit-scrollbar-thumb {
+    border-radius: 4px;
+    background-color: rgba(22, 24, 35, 0.15);
+}
+
+html *::-webkit-scrollbar-track {
+    border-radius: 0;
+    background-color: rgba(0, 0, 0, 0);
+}
+
+
+button,
+input,
+[tabindex] {
+    outline: none;
+    border: none;
+}
+
+//custom tippy
+body {
+    .tippy-box {
+        border-radius: 8px;
+        font-weight: 600;
+        font-size: 1.6rem;
+        line-height: 2.2rem;
+        background-color: rgba(84, 84, 84, 0.92);
+    }
+    .tippy-arrow {
+        color: rgba(84, 84, 84, 0.92);
+    }
+
+    .tippy-content {
+        padding: 8px 9px;
+    }
+    .tippy-box[data-placement^='bottom'] > .tippy-arrow::before {
+        top: -8px;
+    }
+}
+
+
+.wrapperr{
+
+    padding: 20px 20px;
+}
+
+.btn-op{
+    margin-bottom: 10px;
+    display: flex;
+}
+
+th{
+    background-color: rgb(100, 46, 224) !important; /* Thay đổi màu nền header thành đỏ */
+    color: white !important; /* Thay đổi màu chữ nếu cần */
+}
+
+.wrapper{
+    background-color: #dcecf1;
+    padding-bottom:10px
+}
+
+.title-img{
+    text-align: center;
+    width: 100%;
+    position: absolute;
+    bottom: 0;
+    top: 140px;
+    height: 50px;
+}
+
+.title-img p{
+    font-size: 30px;
+    font-weight: 700
+}
+
+.breadcrumb{
+    margin-left: 20px;
+}

@@ -1,0 +1,21 @@
+.wrapper {
+    position: fixed;
+    background-color: #212631;
+    width: 300px;
+    padding: 20px 0 26px 20px;
+    height: 100vh;
+    transform: translateX(0); /* Vị trí ban đầu */
+    transition: transform 0.2s ease, width 0.2s ease; /* Thêm hiệu ứng cho width */
+    z-index: 999;
+}
+
+.showMenu {
+    position: fixed;
+    background-color: #001529;
+    padding: 20px 0 0px 0px;
+    height: 100vh;
+    transform: translateX(-100px);
+    width: 100px; /* Chiều rộng khi hiển thị menu */
+    transition: transform 0.2s ease, width 0.2s ease;
+    z-index: 999;
+}

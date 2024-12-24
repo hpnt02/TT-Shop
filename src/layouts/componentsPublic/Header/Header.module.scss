@@ -1,0 +1,225 @@
+
+.wrapper {
+    --search-border-radius: 92px;
+    --search-height: 46px;
+    --search-top-spacer: 9px;
+    --search-button-width: 52px;
+    position: fixed;
+    top: 0;
+    width:100%;
+    height: 80px;
+    box-shadow: 0px 1px 1px rgba(88, 64, 64, 0.12);
+    background-color: transparent;
+    z-index: 999;
+    color: white;
+}
+
+@keyframes backgroundSlide {
+    0% {
+        height: 80px; 
+        background-color: transparent;
+    }
+    100% {
+       height: 60px;
+       background-color: #323232;
+    }
+}
+
+.showMenu {
+    background-color: #323232; /* Màu nền mặc định */
+    box-shadow: 0px 1px 10px 0px rgba(0, 0, 0, 0.1019607843);
+    opacity: 0; /* Bắt đầu với độ mờ = 0 */
+    animation: none; /* Không có animation ban đầu */
+}
+
+.showMenu.active {
+    opacity: 1; /* Đặt độ mờ về 1 khi có lớp active */
+    animation: backgroundSlide 0.3s ease forwards; /* Áp dụng hiệu ứng khi active */
+}
+
+.inner {
+    height: 100%;
+    width:100%;
+    padding: 0 var(--default-layout-horizontal-spacer);
+    display: flex;
+    align-items: center;
+}
+
+.actions {
+    display: flex;
+    align-items: center;
+    height: 100%;
+    justify-content: space-between;
+}
+
+.header-logo{
+    position: relative;
+    height: 100%;
+    text-align: center;
+    z-index: 1;
+    margin: 0 auto;
+    overflow: hidden
+}
+
+.infor-header {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.user-avatar {
+    width: 32px;
+    height: 32px;
+    object-fit: cover;
+    border-radius: 50%;
+    margin-left: 12px;
+    cursor: pointer;
+}
+
+
+
+.infor-user{
+    display: flex;
+    align-items: center;
+    position: absolute;
+    justify-content: space-between;
+    width: 50%;
+    right: 0;
+    padding-left: 80px;
+    padding-right: 20px;
+
+}
+
+.header-left{
+    position: absolute;
+    width: 50%;
+    left: 0;
+    padding-right: 80px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-left: 20px;
+}
+.header-icon,
+.header-icon span{
+    font-size: 20px;
+    width: 20px;
+
+    color: white;
+    &:hover{
+        cursor: pointer;
+        color: #EFC65A;
+    }
+}
+
+@keyframes Widthmenu {
+    0% {
+        width: 0;
+        background-color: #EFC65A;
+    }
+    100% {
+        width: 100%;
+        background-color: #EFC65A;
+    }
+}
+
+
+.header-menu {
+    cursor: pointer;
+    position: relative; // Để sử dụng position absolute cho ::before
+    color: white;
+    &:hover {
+        color: #EFC65A;
+        &::after {
+            content: ''; // Thêm nội dung rỗng
+            width: 100%; // Độ rộng bằng với phần tử
+            height: 3px; // Độ dày của đường kẻ
+            background-color: #EFC65A; // Màu sắc của đường kẻ
+            position: absolute; // Đặt vị trí tuyệt đối
+            bottom: -2px; // Đặt đường kẻ bên dưới
+            left: 0; // Căn trái
+            animation: Widthmenu 0.5s ease forwards;
+        }
+    }
+}
+
+
+//Giao diện mobile
+
+.infor-user-mobile{
+    justify-content: flex-end !important;
+}
+
+.header-icon-mobile{
+    margin-right: 20px !important;
+}
+
+.wrapper-mobile{
+    background-color: #323232; 
+}
+
+.header-search{
+    height:100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1;
+    margin: 0 auto;
+    overflow: hidden
+}
+
+.header-left-mobile{
+    height: 100%;
+    justify-content: flex-start !important;
+}
+
+.header-left-mobile a{
+    height: 100%;
+    padding-left: 50px;
+}
+
+@keyframes fadeIn{
+    from{
+        opacity: 0;
+    }
+    to{
+        opacity: 1;
+    }
+}
+
+.modal{
+    margin-top: 80px;
+    z-index: 999;
+    position: fixed;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    background-color: rgba(0, 0, 0, 0.3);
+    animation: fadeIn linear 1s;
+}
+
+.menu{
+    width: 300px;
+    height: 100vh;
+    background-color: white;
+}
+
+.wrapper-small{
+    height: 60px !important;
+    background-color: #323232; 
+}
+
+.modal-small{
+    margin-top: 60px !important;
+}
+
+.search-small{
+    background-color: #323232; 
+    padding: 10px 0;
+}
+
+//=================XSmall=========================
+.infor-user-xsmall{
+    justify-content: end !important;
+    padding-left: 0 !important;
+}

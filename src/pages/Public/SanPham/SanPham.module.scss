@@ -1,0 +1,54 @@
+
+
+
+.list-product{
+    display: grid;
+    grid-template-columns: 21% 80%;
+    /* gap: 0%; */
+    margin: 10px 28px
+}
+
+.inner{
+    border: 2px solid #b8b9a9;
+}
+
+.danhmuc-brand{
+    color: white;
+    background-color: var(--primary);
+    line-height: 40px;
+    border-bottom: 2px solid #b8b9a9;
+}
+
+.danhmuc-brand span{
+    font-size: 20px;
+    padding: 10px;
+}
+
+.price{
+    padding-left: 10px;
+    font-family: 'Times New Roman', Times, serif;
+}
+
+.price span{
+    font-weight: 600;
+}
+
+.sort{
+    display: flex;
+    align-items: center;
+    width: 100%;
+    background-color: #a1cde1;
+    margin-bottom: 15px;
+    justify-content: space-between;
+    padding: 7px;
+}
+
+.sort-product{
+    display: flex;
+    align-items: center;
+}
+
+.sort span{
+    font-size: 15px;
+    padding: 0 10px;
+}

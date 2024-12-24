@@ -1,0 +1,52 @@
+
+.login{
+    display: grid;
+    grid-template-columns: 49% 49%;
+    gap: 2%;
+    margin: 10px;
+}
+
+.login-left{
+    width: 100%;
+    text-align: center;
+}
+
+.login-right{
+    width: 100%;
+    margin: 0 auto;
+}
+
+.title{
+    width: 100%;
+    font-size: 35px;
+    font-weight: 700;
+    text-align: center;
+    margin: 10px 0;
+}
+
+.title p{
+    color: #EFC65A;
+}
+
+.title-login{
+    text-align: center;
+    font-size: 25px;
+    font-style: italic;
+}
+
+.No-Account{
+    font-size:14px;
+    font-style: italic;
+}
+
+.No-Account span{
+    color: blue;
+    cursor: pointer;
+}
+
+.register{
+    display: grid;
+    grid-template-columns: 49% 49%;
+    gap: 2%;
+    margin: 0 auto;
+}

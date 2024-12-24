@@ -1,0 +1,14 @@
+.ant-menu-item {
+    display: flex !important;
+    justify-content: center !important;
+    align-items: center !important;
+    height: 64px; /* Hoặc chiều cao của menu item */
+}
+
+.ant-menu-item-icon {
+    margin: 0 !important;
+    display: flex !important;
+    justify-content: center !important;
+    align-items: center !important;
+    width: 100%; /* Đảm bảo biểu tượng chiếm toàn bộ chiều rộng */
+}

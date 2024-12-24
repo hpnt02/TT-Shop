@@ -1,0 +1,166 @@
+.newProduct-Carousel {
+    display: grid !important;
+    grid-template-columns: 49% 49%;
+    gap: 2%;
+    margin-bottom: 50px;
+}
+
+.newProduct-left {
+    width: 100%;
+}
+
+.img-Carousel {
+    width: 48%;
+    margin: 0 auto;
+}
+
+.text {
+    position: relative;
+    max-width: 350px;
+    margin: 0 auto;
+    padding: 10px;
+    height: 450px;
+}
+
+.text-1 {
+    width: 90%;
+    height: 100%;
+}
+
+.img-Carousel {
+    width: 100%;
+    height: 100%;
+}
+
+.img-Carousel img {
+    border-top-left-radius: 500px;
+    border-top-right-radius: 500px;
+    width: 100%;
+    height: 100%;
+}
+
+.img-top {
+    position: absolute;
+    top: 0;
+    left: 0;
+}
+
+.img-top img {
+    width: 90%;
+}
+
+.img-bottom {
+    position: absolute;
+    bottom: 0;
+    right: 0;
+}
+
+.img-bottom img {
+    width: 100%;
+}
+
+.infor-newProduct {
+    margin: auto 10px;
+}
+
+.title {
+    margin-bottom: 15px;
+    font-size: 20px;
+}
+
+.describe {
+    margin: 20px 0;
+    font-size: 15px;
+}
+
+.price {
+    display: flex;
+    align-items: center;
+}
+
+.price-old {
+    font-size: 19px;
+    color: #666;
+    text-decoration: line-through;
+    margin-right: 15px;
+}
+
+.price-current {
+    font-size: 25px;
+    color: red;
+    font-weight: 700;
+}
+
+//============Mobile and Table==========================
+
+.newProduct-mobile {
+    display: grid;
+    grid-template-columns: 40% 60%;
+    margin: 10px;
+    padding-bottom: 30px;
+}
+
+.newProduct-mobile .newProduct-left {
+    padding: 5px;
+}
+
+.newProduct-mobile .text {
+    position: relative;
+    height: 100%;
+    padding: 0;
+}
+
+.newProduct-mobile .text-1 {
+    width: 100%;
+    height: 100%;
+}
+
+.newProduct-mobile .img-Carousel img {
+    height: 100%;
+    width: 90%;
+    padding: 5px;
+}
+
+.newProduct-mobile img {
+    height: 100%;
+    width: 100%;
+}
+
+.newProduct-mobile .img-top{
+    width: 90%;
+}
+
+.newProduct-mobile .title {
+    font-size: 1.3rem;
+    margin: 5px 0;
+    display: -webkit-box; /* Hỗ trợ cho Safari và Chrome cũ */
+    -webkit-box-orient: vertical; /* Định hướng hộp dọc */
+    -webkit-line-clamp: 1; /* Giới hạn văn bản ở 2 dòng */
+    overflow: hidden; /* Ẩn văn bản thừa */
+    text-overflow: ellipsis; /* Thêm dấu ba chấm */
+    white-space: normal; /* Cho phép xuống dòng */
+    line-clamp: 1;
+}
+
+.newProduct-mobile .describe {
+    display: -webkit-box; /* Hỗ trợ cho Safari và Chrome cũ */
+    -webkit-box-orient: vertical; /* Định hướng hộp dọc */
+    -webkit-line-clamp: 2; /* Giới hạn văn bản ở 2 dòng */
+    overflow: hidden; /* Ẩn văn bản thừa */
+    text-overflow: ellipsis; /* Thêm dấu ba chấm */
+    white-space: normal; /* Cho phép xuống dòng */
+    line-clamp: 2;
+    margin: 5px 0;
+}
+
+.newProduct-mobile .price-old{
+    font-size: 1.5rem;
+}
+
+.newProduct-mobile .price-current{
+    font-size: 2rem;
+}
+
+.newProduct-mobile button{
+    margin-top: 10px;
+}

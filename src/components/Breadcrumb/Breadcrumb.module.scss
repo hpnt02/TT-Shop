@@ -1,0 +1,49 @@
+
+.breadcrumb{
+    padding-left: 20px;
+    margin: 5px 0;
+}
+
+
+@keyframes Widthmenu {
+    0% {
+        width: 0;
+        background-color: #EFC65A;
+    }
+    100% {
+        width: 100%;
+        background-color: #EFC65A;
+    }
+}
+
+
+.breadcrumb a{
+    text-decoration: none;
+    color: rgb(110 106 106);
+    cursor: pointer;
+    margin-left: 5px;
+    position: relative; // Để sử dụng position absolute cho ::before
+    &:hover {
+        color: #EFC65A;
+        &::after {
+            content: ''; // Thêm nội dung rỗng
+            width: 100%; // Độ rộng bằng với phần tử
+            height: 3px; // Độ dày của đường kẻ
+            background-color: #EFC65A; // Màu sắc của đường kẻ
+            position: absolute; // Đặt vị trí tuyệt đối
+            bottom: -5px; // Đặt đường kẻ bên dưới
+            left: 0; // Căn trái
+            animation: Widthmenu 0.5s ease forwards;
+        }
+    }
+}
+
+.breadcrumb span,
+.breadcrumb-item{
+    padding-left: 5px;
+}
+
+.disabled {
+    pointer-events: none; 
+    color: var(--primary) !important; 
+}

@@ -1,0 +1,122 @@
+.search,
+.search-result {
+    width: 361px;
+}
+
+.search {
+    position: relative;
+    color: white;
+    height: var(--search-height);
+    padding-left: 16px;
+    background-color: rgba(22, 24, 35, 0.06);
+    border-radius: var(--search-border-radius);
+    display: flex;
+    border: 1.5px solid #EFC65A;
+
+    input {
+        flex: 1;
+        height: 100%;
+        color: white;
+        font-size: 13px;
+        background-color: transparent;
+        caret-color: #EFC65A;
+        font-family: var(--font-family);
+    }
+
+    input:not(:placeholder-shown) ~ .search-btn {
+        color: white;
+    }
+
+    &::after {
+        position: absolute;
+        content: '';
+        height: calc(var(--search-height) - var(--search-top-spacer) * 2);
+        width: 1px;
+        top: var(--search-top-spacer);
+        right: var(--search-button-width);
+        background-color: rgba(22, 24, 35, 0.12);
+    }
+
+    &:focus-within {
+        border-color: #EFC65A;
+    }
+}
+
+.search-title {
+    font-size: 1.4rem;
+    font-weight: 600;
+    padding: 5px 12px;
+    color: rgba(22, 24, 35, 0.5);
+}
+
+.clear,
+.loading {
+    position: absolute;
+    right: calc(var(--search-button-width) + 16px);
+    top: 50%;
+    transform: translateY(-50%);
+    color: rgba(22, 24, 35, 0.34);
+    padding: 0 !important;
+}
+
+.loading {
+    animation: spinner 1s linear infinite;
+}
+
+@keyframes spinner {
+    from {
+        transform: translateY(-50%) rotate(0);
+    }
+    to {
+        transform: translateY(-50%) rotate(360deg);
+    }
+}
+
+.search-btn {
+    width: var(--search-button-width);
+    height: 100%;
+    border-top-right-radius: var(--search-border-radius);
+    border-bottom-right-radius: var(--search-border-radius);
+    color: white;
+    padding: 0 !important;
+    &:hover {
+        cursor: pointer;
+        background-color: rgba(22, 24, 35, 0.03);
+    }
+
+    &:active {
+        background-color: rgba(22, 24, 35, 0.06);
+    }
+}
+
+.infor-product{
+    display: flex;
+    align-items: center;
+    margin: 10px 0;
+    &:hover{
+        cursor: pointer;
+    }
+}
+
+.img-search{
+    width: 90px;
+    height: 90px;
+    padding-left: 10px;
+    margin-right: 10px;
+}
+
+.name-search{
+    color: black
+}
+
+.price-search{
+    font-size: 1.4rem;
+    color:#898383;
+}
+
+//====================Small===============================
+.search-small{
+    height: 35px !important;
+    width: 90%;
+    margin: 0 auto;
+}

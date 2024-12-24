@@ -1,0 +1,25 @@
+.wrapper {
+    display: flex;
+    flex-direction: row;
+}
+
+.container {
+    margin-left: 300px;
+    width: calc(100% - 300px);
+    max-width: 100%;
+    transform: translateX(0); /* Vị trí ban đầu */
+    transition: transform 0.3s ease; 
+}
+
+.newContainer{
+    width: 100%;
+    max-width: 100%;
+    transform: translateX(-50); /* Vị trí ban đầu */
+    transition: transform 0.3s ease-in-out; 
+}
+
+.content {
+    flex: 1;
+    margin-top: 60px;
+    background-color: #F3F4F7;
+}

@@ -1,0 +1,84 @@
+@keyframes slideDown {
+    0% {
+        transform: translateY(-50%);
+        opacity: 0;
+    }
+    100% {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+
+.slide-down {
+    animation: slideDown 0.5s ease forwards; /* Thay đổi thời gian và kiểu nếu cần */
+    padding: 10px 20px;
+}
+
+@keyframes slideDown1 {
+    0% {
+        transform: translateY(0);
+        opacity: 0;
+    }
+    100% {
+        transform: translateY(-100%);
+        opacity: 1;
+    }
+}
+
+.slide-down1 {
+    animation: slideDown1 0.5s ease forwards; /* Thay đổi thời gian và kiểu nếu cần */
+    padding: 10px 20px;
+}
+
+.form-evaluate {
+    display: grid;
+    grid-template-columns: 59% 39%;
+    gap: 2%;
+}
+
+.ant-col-24.ant-form-item-label > label {
+    font-size: 20px;
+}
+
+.btn {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.btn button {
+    width: 20%;
+}
+
+.evaluate-customer {
+    word-wrap: 'break-word';
+    margin: '20px 20px';
+    position: relative;
+    &::after {
+        position: absolute;
+        content: '';
+        width: 95%;
+        border: 1px solid #00BCD4;
+        text-align: center;
+        top: 0;
+        left: 50%;
+        transform: translateX(-50%);
+    }
+}
+
+.evaluate-customer h2{
+   padding-top: 10px;
+}
+.evaluate-content {
+    font-size: 18px;
+    padding: 10px;
+}
+
+.evaluate-img {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.item-img {
+    padding: 10px;
+}

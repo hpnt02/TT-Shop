@@ -1,0 +1,11 @@
+
+
+.inner{
+    display:flex;
+    font-size:16px;
+     padding:5px 0 5px 20px;
+     &:hover{
+        cursor: pointer;
+        color: var(--primary);
+     }
+}

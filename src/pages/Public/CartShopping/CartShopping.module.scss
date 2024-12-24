@@ -1,0 +1,88 @@
+.cart{
+    background-color: #c0dbdf;
+    margin: 10px 10px;
+    border-radius: 20px;
+}
+
+.infor-cart{
+    margin: 10px;
+    padding: 10px;
+    display: grid;
+    grid-template-columns: 75% 23%;
+    gap: 2%
+}
+
+.icon{
+    color: black;
+    background-color: white;
+    padding: 7px;
+    cursor: pointer;
+    &:hover{
+        color: var(--primary)
+    }
+}
+
+.cart-right{
+    border: 2px solid #aba7a7;
+    border-radius: 10px;
+}
+
+.inner{
+    padding: 0 5px
+}
+
+.cart-right__title h2{
+    font-style: italic;
+    color: white;
+    background-color:#09d7df ;
+    text-align: center;
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+    border-bottom: 2px solid #aba7a7;
+}
+
+.total-price{
+    display: flex;
+    justify-content: space-between;
+    margin: 10px 5px;
+    align-items: center;
+}
+
+.total{
+    font-size: 20px;
+    color: #776ad9;
+}
+
+.price{
+    font-size: 21px;
+    color: #eb930a
+}
+
+.btn{
+    width: 100%;
+    padding-bottom: 10px;
+}
+
+.btn button{
+    width: 100%;
+}
+
+.giohang{
+    width: 100%;
+}
+
+.image-giohang{
+    width: 90%;
+    margin: 0 auto;
+    text-align: center;
+}
+
+.image-giohang img{
+    width:500px;
+    height: 500px;
+}
+
+.image-giohang h2{
+    font-style: italic;
+    color: rgb(175, 164, 164);
+}

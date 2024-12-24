@@ -1,0 +1,84 @@
+.form-input{
+    display: grid;
+    grid-template-columns: 49% 49%;
+    gap: 2%;
+}
+
+
+.raise:hover,
+.raise:focus {
+  box-shadow: 0 0.5em 0.5em -0.4em var(--hover);
+  transform: translateY(-0.25em);
+  border: 2px solid rgb(231, 7, 201);
+}
+.raise{
+    border: 2px solid #19bc8b
+    ;
+    border-radius: 10px;
+}
+
+$colors: (
+
+  raise: rgb(59, 11, 235), 
+
+);
+
+
+@each $button, $color in $colors {
+  .#{$button} {
+    --color: #{$color};
+    --hover: #{adjust-hue($color, 45deg)};
+  }
+}
+
+// Now every button will have different colors as set above. We get to use the same structure, only changing the custom properties.
+button {  
+  color: black;
+  transition: 0.25s;
+  border: 2px solid rgb(8, 218, 148);
+  &:hover,
+  &:focus { 
+    border-color: var(--hover);
+    cursor: pointer;
+  }
+}
+
+
+
+// Basic button styles
+button {
+  background: none;
+  border: 2px solid rgb(42, 7, 197);
+  font: inherit;
+  line-height: 1;
+  padding: 1em 2em;
+}
+
+
+code { 
+  color: red;
+  font: inherit;
+}
+
+.buttons {
+    display: flex;          /* Sử dụng flexbox để sắp xếp các nút */
+    overflow-x: auto;      /* Thêm khả năng cuộn ngang */
+    white-space: nowrap;   /* Ngăn chặn xuống dòng */
+    padding: 10px;         /* Thêm khoảng đệm */
+    margin-bottom: 10px;          /* Đặt chiều rộng tối đa cho thanh */
+    border: 3px solid #ccc;      /* Đường viền cho thanh */
+    border-radius: 5px;          /* Bo tròn góc */
+    background-color: #f9f9f9;   /* Màu nền cho thanh */
+}
+
+.buttons::-webkit-scrollbar {
+    height: 8px;
+ 
+}
+.buttons::-webkit-scrollbar-track {
+    background-color: transparent;
+
+}
+.buttons::-webkit-scrollbar-thumb {
+    background-color: rgb(172, 165, 180);
+}

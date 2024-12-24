@@ -1,0 +1,175 @@
+.carousel {
+    width: 100%;
+    height: 100vh;
+}
+
+.carousel-img {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+}
+
+.carousel-img img {
+    width: 100%;
+    height: 100%;
+}
+
+.content-slide {
+    position: absolute;
+    top: 200px;
+    padding-left: 250px;
+}
+
+.conten-dlide_title {
+    font-size: 25px;
+    color: white;
+    font-style: italic;
+}
+
+.conten-dlide_title-2 {
+    padding: 20px 0;
+    font-size: 40px;
+    color: white;
+    font-weight: 700;
+}
+@keyframes Widthmenu {
+    0% {
+        width: 0;
+        background-color: var(--primary);
+    }
+    100% {
+        width: 100%;
+        background-color: var(--primary);
+    }
+}
+
+//======================Sản phẩm mới nhất================================
+.new-Product {
+    background-color: #c0dbdf;
+    margin: 20px 10px;
+    border-radius: 20px;
+}
+
+.title {
+    width: 100%;
+    text-align: center;
+    font-style: italic;
+    padding-top: 10px;
+}
+
+//=============Khuyến mãi==================================
+.promotion {
+    height: 600px;
+    background-color: #c0dbdf;
+    margin: 10px 10px;
+    border-radius: 20px;
+}
+
+.title-home {
+    display: grid;
+    grid-template-columns: 25% 73%;
+    gap: 2%;
+    padding: 20px 20px 0;
+}
+
+.title-home h2 {
+    font-style: italic;
+}
+
+@keyframes ma {
+    0% {
+        transform: translateX(90%);
+    }
+    100% {
+        transform: translateX(-65%);
+    }
+}
+
+.thongbao-km {
+    position: relative;
+    overflow: hidden;
+    background-color: #e49f47;
+    margin: 0 auto;
+    width: 90%;
+    height: 100%;
+}
+
+.infor-km {
+    position: absolute;
+    width: 100%;
+    animation: ma 10s linear infinite;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    color: white;
+}
+
+.img-km {
+    width: 129px;
+    height: 129px;
+    position: absolute;
+    left: -60px;
+    top: -36px;
+    transform: rotate(-10deg);
+}
+
+//==================Thương hiệu==================================
+.brand {
+    width: 99%;
+    margin: 0 auto;
+    padding-bottom: 20px;
+}
+
+//==============================LARGE==========================
+.carousel-Xsmall,
+.carousel-small,
+.carousel-medium,
+.carousel-large {
+    margin-top: 80px;
+    height: 300px;
+}
+
+.content {
+    width: 100%;
+    margin: 0 auto;
+    position: absolute;
+    top: 50%;
+    z-index: 2;
+    transform: translateY(-50%);
+}
+
+.content-slide__tablet {
+    width: 80%;
+    margin: 0 auto;
+}
+
+.content-slide__tablet .conten-dlide_title-2 {
+    font-size: 3.3rem;
+}
+
+//==============================Medium===================
+.carousel-medium .conten-dlide_title{
+    font-size: 3rem !important;
+}
+
+.carousel-medium .conten-dlide_title-2{
+    font-size: 3.2rem !important;
+}
+
+//=======================Small===================
+.carousel-small .conten-dlide_title{
+    font-size: 2.6rem !important;
+}
+
+.carousel-small .conten-dlide_title-2{
+    font-size: 2.8rem !important;
+}
+//=======================XSmall===================
+.carousel-Xsmall .conten-dlide_title{
+    font-size: 2.2rem !important;
+}
+
+.carousel-Xsmall .conten-dlide_title-2{
+    font-size: 2.4rem !important;
+}

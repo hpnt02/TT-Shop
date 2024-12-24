@@ -1,0 +1,142 @@
+
+.infor-product{
+    display: grid;
+    grid-template-columns: 49% 49%;
+    gap: 2%;
+    width: 95%;
+    margin: 0 auto
+}
+
+.infor-product__left{
+    display: grid;
+    grid-template-columns: 20% 78%;
+    gap: 2%;
+}
+
+
+.infor-newProduct{
+    margin: auto 10px;
+
+}
+
+.title{
+    margin-bottom: 15px;
+    font-size: 20px;
+}
+
+.describe{
+    margin: 20px 0;
+    font-size: 18px;
+    font-family: 'Times New Roman', Times, serif;
+}
+
+.price-old{
+    font-size: 19px;
+    color: #666;
+    text-decoration: line-through;
+    margin-right: 15px;
+}
+
+.price-current{
+    font-size: 19px;
+    color: red;
+    font-weight: 700;
+}
+
+.icon{
+    color: black;
+    background-color: white;
+    padding: 6px;
+    cursor: pointer;
+    &:hover{
+        color: var(--primary)
+    }
+}
+
+.infor-product-ttsp{
+    background-color: #c0dbdf;
+    margin: 10px 10px;
+    border-radius: 20px;
+}
+
+
+
+.title-infor_product{
+    width: 100%;
+    border-top-left-radius: 20px;
+    border-top-right-radius: 20px;
+    background-color: #0046ff;
+    position: relative; // Để sử dụng position absolute cho ::before
+    &::after {
+        content: "";
+        width: 17%;
+        height: 3px;
+        background-color: #EFC65A;
+        position: absolute;
+        bottom: 11px;
+        left: 24px
+    }
+}
+
+.title-infor_product h2{
+    padding: 10px ;
+    color: var(--primary)
+}
+.content-infor-product{
+    margin: 10px;
+    padding-bottom: 20px;
+}
+.content-infor-product span{
+ font-family: 'Times New Roman', Times, serif;
+ padding-left: 30px;
+ font-size: 18px;
+}
+
+.SPCL{
+    background-color: #c0dbdf;
+    margin: 10px 10px;
+    border-radius: 20px;
+}
+
+.evaluate{
+    display: grid;
+    grid-template-columns: 29% 46.66% 25.33%;
+    padding: 10px 10px;
+    justify-content: center;
+    align-items: center;
+}
+
+.evaluate-left{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+}
+.evaluate-left span{
+   margin-top:10px
+}
+
+.evaluate-number{
+    color:var(--primary);
+    font-size: 80px;
+    line-height: 80px;
+    font-family: Roboto;
+    font-weight: 700
+}
+
+.evaluate-center{
+    padding: 0 10px
+}
+
+.evaluate-right{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.evaluate-right button{
+    width: 90%;
+    margin: 8px auto
+}

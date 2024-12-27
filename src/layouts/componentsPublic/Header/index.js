@@ -97,9 +97,23 @@ function Header() {
                 navigate(config.routes.lsdh);
                 break;
             case 'Login':
+                if (window.location.href !== "http://localhost:3000/login") {
+                    // Lấy địa chỉ hiện tại nếu không ở trang login
+                    const currentPathname = window.location.pathname;
+                    localStorage.setItem('http', currentPathname)
+                } else {
+                    console.log("Không lấy địa chỉ hiện tại vì đang ở trang login.");
+                }
                 navigate(config.routes.login, { state: { id: true } });
                 break;
             case 'Register':
+                if (window.location.href !== "http://localhost:3000/login") {
+                    // Lấy địa chỉ hiện tại nếu không ở trang login
+                 const currentPathname = window.location.pathname;
+               localStorage.setItem('http', currentPathname)
+                } else {
+                    console.log("Không lấy địa chỉ hiện tại vì đang ở trang login.");
+                }
                 navigate(config.routes.login, { state: { id: false } });
                 break;
             default:
@@ -204,6 +218,8 @@ function Header() {
                 console.log('Unknown item');
         }
     };
+    
+
 
     useEffect(() => {
         Account(dispatch);
@@ -217,13 +233,13 @@ function Header() {
                 <header className={cx('wrapper', 'active', `${isScrolled ? 'showMenu' : ''}`)}>
                     <div className={cx('inner')}>
                         <div className={cx('header-logo')}>
-                            <a href={config.routes.home}>
+                            <Link to={config.routes.home}>
                                 <img
                                     style={{ height: '100%', padding: '5px 0' }}
                                     src="https://res.cloudinary.com/di56pogid/image/upload/v1730030954/final_x4gecu.png"
                                     alt="Ảnh lỗi"
                                 />
-                            </a>
+                            </Link>
                         </div>
                         <div className={cx('header-left')}>
                             <Link to={config.routes.home} className={cx('header-menu', 'header-icon')}>

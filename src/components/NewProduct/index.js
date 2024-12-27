@@ -176,12 +176,12 @@ function NewProduct({ data }) {
                                             <h2>{sp.nameProduct}</h2>
                                         </div>
                                         <div className={cx('describe')}>
-                                                {sp.describe?.split('\n').map((line, index) => (
-                                                    <span key={index}>
-                                                        {line} <br />
-                                                    </span>
-                                                ))}
-                                            </div>
+                                            {sp.describe?.split('\n').map((line, index) => (
+                                                <span key={index}>
+                                                    {line} <br />
+                                                </span>
+                                            ))}
+                                        </div>
                                         <div>
                                             {sp.KhuyenMai !== undefined ? (
                                                 <>
@@ -200,24 +200,22 @@ function NewProduct({ data }) {
                                                 </span>
                                             )}
                                         </div>
-                                     
-            
 
-                                            <Rate disabled defaultValue={TrungbinhDanhGia} />
-                                            <ButtonCustom primary onClick={(event) => handlecard(sp, event)}>
-                                                Thêm vào giỏ hàng
-                                            </ButtonCustom>
-                                        </div>
+                                        <Rate disabled defaultValue={TrungbinhDanhGia} />
+                                        <ButtonCustom primary onClick={(event) => handlecard(sp, event)}>
+                                            Thêm vào giỏ hàng
+                                        </ButtonCustom>
                                     </div>
                                 </div>
-                          
+                            </div>
                         );
                     })}
                 </Carousel>
             </MobileAndTablet>
-            <style jsx>{`
-                    .ant-carousel .slick-dots-bottom{
-                        bottom: 16px
+            <style jsx>
+                {`
+                    .ant-carousel .slick-dots-bottom {
+                        bottom: 16px;
                     }
                 `}
             </style>

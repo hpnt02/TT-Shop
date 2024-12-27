@@ -9,6 +9,7 @@ import { ChiTietHoaDon, DanhGia, TMCTHD, UpdateCTHD } from '~/redux/API/api';
 import { useDispatch, useSelector } from 'react-redux';
 import { useLocation, useNavigate } from 'react-router-dom';
 import config from '~/config';
+import { ExtraLarge, Large, Medium, Small, XSmall } from '../Responsive';
 
 const DinhDangTien = (amount) => {
     return new Intl.NumberFormat('vi-VN', {
@@ -120,69 +121,342 @@ function CarouselItem({ data }) {
             onMouseUp={handleMouseUp}
             onMouseLeave={handleMouseUp} // Handle mouse leaving the component
         >
-            <div style={{ margin: '30px' }}>
-                <Carousel id="carousel-item" ref={carouselRef} slidesToShow={5} style={{ width: '100%' }}>
-                    {data.map((km) => {
-                        const Danhgia = danhgia.filter((state) => state.Product === km._id);
-                        const LuotDanhGia = Danhgia.filter((item) => item.Rate !== 0);
-                        const TongDiemDanhGia = LuotDanhGia.reduce((sum, item) => sum + item.Rate, 0);
-                        const TrungbinhDanhGia = LuotDanhGia.length > 0 ? TongDiemDanhGia / LuotDanhGia.length : 0;
+            <ExtraLarge>
+                <div style={{ margin: '30px' }}>
+                    <Carousel id="carousel-item" ref={carouselRef} slidesToShow={5} style={{ width: '100%' }}>
+                        {data.map((km) => {
+                            const Danhgia = danhgia.filter((state) => state.Product === km._id);
+                            const LuotDanhGia = Danhgia.filter((item) => item.Rate !== 0);
+                            const TongDiemDanhGia = LuotDanhGia.reduce((sum, item) => sum + item.Rate, 0);
+                            const TrungbinhDanhGia = LuotDanhGia.length > 0 ? TongDiemDanhGia / LuotDanhGia.length : 0;
 
-                        return (
-                            <div
-                                key={km._id} // Sử dụng km._id làm key duy nhất
-                                style={{
-                                    margin: '20px',
-                                    position: 'relative',
-                                }}
-                            >
-                                <Card
-                                    hoverable
-                                    onClick={(event) => handleCardClick(km, event)} // Gán sự kiện onClick
+                            return (
+                                <div
+                                    key={km._id} // Sử dụng km._id làm key duy nhất
                                     style={{
-                                        width: 240,
-                                        margin: '0 10px',
-                                        userSelect: 'none',
+                                        margin: '20px',
+                                        position: 'relative',
                                     }}
-                                    cover={<img alt="example" src={km.Image.Image1} style={{ height: '250px' }} />}
                                 >
-                                    <div className={cx('name-Product')}>
-                                        <span>{km.nameProduct}</span>
-                                    </div>
-                                    <div className={cx('price-Product')}>
-                                        {km.KhuyenMai ? (
-                                            <>
-                                                <span className={cx('price-old')}>
-                                                    {DinhDangTien(km.PriceProduct)}đ
-                                                </span>
+                                    <Card
+                                        hoverable
+                                        onClick={(event) => handleCardClick(km, event)} // Gán sự kiện onClick
+                                        style={{
+                                            width: 240,
+                                            margin: '0 10px',
+                                            userSelect: 'none',
+                                        }}
+                                        cover={<img alt="example" src={km.Image.Image1} style={{ height: '250px' }} />}
+                                    >
+                                        <div className={cx('name-Product')}>
+                                            <span>{km.nameProduct}</span>
+                                        </div>
+                                        <div className={cx('price-Product')}>
+                                            {km.KhuyenMai ? (
+                                                <>
+                                                    <span className={cx('price-old')}>
+                                                        {DinhDangTien(km.PriceProduct)}đ
+                                                    </span>
+                                                    <span className={cx('price-current')}>
+                                                        {DinhDangTien(km.GiaBanRa)}đ
+                                                    </span>
+                                                </>
+                                            ) : (
                                                 <span className={cx('price-current')}>
                                                     {DinhDangTien(km.GiaBanRa)}đ
                                                 </span>
-                                            </>
-                                        ) : (
-                                            <span className={cx('price-current')}>{DinhDangTien(km.GiaBanRa)}đ</span>
-                                        )}
-                                    </div>
-                                    <Rate disabled defaultValue={TrungbinhDanhGia} />
-                                    <div className={cx('order-item')}>
-                                        <ButtonCustom primary onClick={(event) => handlecard(km, event)}>
-                                            Thêm vào giỏ hàng
-                                        </ButtonCustom>
-                                    </div>
-                                    {km.KhuyenMai ? (
-                                        <div className={cx('sale-off')}>
-                                            <span className={cx('sale-off-label')}>GIẢM </span>
-                                            <span className={cx('sale-off-percent')}>{km.KhuyenMai}%</span>
+                                            )}
                                         </div>
-                                    ) : (
-                                        ''
-                                    )}
-                                </Card>
-                            </div>
-                        );
-                    })}
-                </Carousel>
-            </div>
+                                        <Rate disabled defaultValue={TrungbinhDanhGia} />
+                                        <div className={cx('order-item')}>
+                                            <ButtonCustom primary onClick={(event) => handlecard(km, event)}>
+                                                Thêm vào giỏ hàng
+                                            </ButtonCustom>
+                                        </div>
+                                        {km.KhuyenMai ? (
+                                            <div className={cx('sale-off')}>
+                                                <span className={cx('sale-off-label')}>GIẢM </span>
+                                                <span className={cx('sale-off-percent')}>{km.KhuyenMai}%</span>
+                                            </div>
+                                        ) : (
+                                            ''
+                                        )}
+                                    </Card>
+                                </div>
+                            );
+                        })}
+                    </Carousel>
+                </div>
+            </ExtraLarge>
+            <Large>
+                <div style={{ margin: '5px' }}>
+                    <Carousel id="carousel-item" ref={carouselRef} slidesToShow={4} style={{ width: '100%' }} autoplay>
+                        {data.map((km) => {
+                            const Danhgia = danhgia.filter((state) => state.Product === km._id);
+                            const LuotDanhGia = Danhgia.filter((item) => item.Rate !== 0);
+                            const TongDiemDanhGia = LuotDanhGia.reduce((sum, item) => sum + item.Rate, 0);
+                            const TrungbinhDanhGia = LuotDanhGia.length > 0 ? TongDiemDanhGia / LuotDanhGia.length : 0;
+
+                            return (
+                                <div
+                                    key={km._id} // Sử dụng km._id làm key duy nhất
+                                    style={{
+                                        margin: '20px',
+                                        position: 'relative',
+                                    }}
+                                >
+                                    <Card
+                                        hoverable
+                                        onClick={(event) => handleCardClick(km, event)} // Gán sự kiện onClick
+                                        style={{
+                                            width: 230,
+                                            margin: '0 10px',
+                                            userSelect: 'none',
+                                        }}
+                                        cover={<img alt="example" src={km.Image.Image1} style={{ height: '220px' }} />}
+                                    >
+                                        <div className={cx('name-Product')}>
+                                            <span>{km.nameProduct}</span>
+                                        </div>
+                                        <div className={cx('price-Product')}>
+                                            {km.KhuyenMai ? (
+                                                <>
+                                                    <span className={cx('price-old')}>
+                                                        {DinhDangTien(km.PriceProduct)}đ
+                                                    </span>
+                                                    <span className={cx('price-current')}>
+                                                        {DinhDangTien(km.GiaBanRa)}đ
+                                                    </span>
+                                                </>
+                                            ) : (
+                                                <span className={cx('price-current')}>
+                                                    {DinhDangTien(km.GiaBanRa)}đ
+                                                </span>
+                                            )}
+                                        </div>
+                                        <Rate disabled defaultValue={TrungbinhDanhGia} />
+                                        <div className={cx('order-item')}>
+                                            <ButtonCustom primary onClick={(event) => handlecard(km, event)}>
+                                                Thêm vào giỏ hàng
+                                            </ButtonCustom>
+                                        </div>
+                                        {km.KhuyenMai ? (
+                                            <div className={cx('sale-off')}>
+                                                <span className={cx('sale-off-label')}>GIẢM </span>
+                                                <span className={cx('sale-off-percent')}>{km.KhuyenMai}%</span>
+                                            </div>
+                                        ) : (
+                                            ''
+                                        )}
+                                    </Card>
+                                </div>
+                            );
+                        })}
+                    </Carousel>
+                </div>
+            </Large>
+            <Medium>
+                <div style={{ margin: '5px' }}>
+                    <Carousel id="carousel-item" ref={carouselRef} slidesToShow={3} style={{ width: '100%' }} autoplay>
+                        {data.map((km) => {
+                            const Danhgia = danhgia.filter((state) => state.Product === km._id);
+                            const LuotDanhGia = Danhgia.filter((item) => item.Rate !== 0);
+                            const TongDiemDanhGia = LuotDanhGia.reduce((sum, item) => sum + item.Rate, 0);
+                            const TrungbinhDanhGia = LuotDanhGia.length > 0 ? TongDiemDanhGia / LuotDanhGia.length : 0;
+
+                            return (
+                                <div
+                                    key={km._id} // Sử dụng km._id làm key duy nhất
+                                    style={{
+                                        margin: '20px',
+                                        position: 'relative',
+                                    }}
+                                >
+                                    <Card
+                                        hoverable
+                                        onClick={(event) => handleCardClick(km, event)} // Gán sự kiện onClick
+                                        style={{
+                                            width: 240,
+                                            margin: '0 10px',
+                                            userSelect: 'none',
+                                        }}
+                                        cover={<img alt="example" src={km.Image.Image1} style={{ height: '250px' }} />}
+                                    >
+                                        <div className={cx('name-Product')}>
+                                            <span>{km.nameProduct}</span>
+                                        </div>
+                                        <div className={cx('price-Product')}>
+                                            {km.KhuyenMai ? (
+                                                <>
+                                                    <span className={cx('price-old')}>
+                                                        {DinhDangTien(km.PriceProduct)}đ
+                                                    </span>
+                                                    <span className={cx('price-current')}>
+                                                        {DinhDangTien(km.GiaBanRa)}đ
+                                                    </span>
+                                                </>
+                                            ) : (
+                                                <span className={cx('price-current')}>
+                                                    {DinhDangTien(km.GiaBanRa)}đ
+                                                </span>
+                                            )}
+                                        </div>
+                                        <Rate disabled defaultValue={TrungbinhDanhGia} />
+                                        <div className={cx('order-item')}>
+                                            <ButtonCustom primary onClick={(event) => handlecard(km, event)}>
+                                                Thêm vào giỏ hàng
+                                            </ButtonCustom>
+                                        </div>
+                                        {km.KhuyenMai ? (
+                                            <div className={cx('sale-off')}>
+                                                <span className={cx('sale-off-label')}>GIẢM </span>
+                                                <span className={cx('sale-off-percent')}>{km.KhuyenMai}%</span>
+                                            </div>
+                                        ) : (
+                                            ''
+                                        )}
+                                    </Card>
+                                </div>
+                            );
+                        })}
+                    </Carousel>
+                </div>
+            </Medium>
+            <Small>
+                <div style={{ margin: '5px' }}>
+                    <Carousel id="carousel-item" ref={carouselRef} slidesToShow={2} style={{ width: '100%' }} autoplay>
+                        {data.map((km) => {
+                            const Danhgia = danhgia.filter((state) => state.Product === km._id);
+                            const LuotDanhGia = Danhgia.filter((item) => item.Rate !== 0);
+                            const TongDiemDanhGia = LuotDanhGia.reduce((sum, item) => sum + item.Rate, 0);
+                            const TrungbinhDanhGia = LuotDanhGia.length > 0 ? TongDiemDanhGia / LuotDanhGia.length : 0;
+
+                            return (
+                                <div
+                                    key={km._id} // Sử dụng km._id làm key duy nhất
+                                    style={{
+                                        margin: '20px',
+                                        position: 'relative',
+                                    }}
+                                >
+                                    <Card
+                                        hoverable
+                                        onClick={(event) => handleCardClick(km, event)} // Gán sự kiện onClick
+                                        style={{
+                                            width: 250,
+                                            margin: '0 10px',
+                                            userSelect: 'none',
+                                        }}
+                                        cover={<img alt="example" src={km.Image.Image1} style={{ height: '250px' }} />}
+                                    >
+                                        <div className={cx('name-Product')}>
+                                            <span>{km.nameProduct}</span>
+                                        </div>
+                                        <div className={cx('price-Product')}>
+                                            {km.KhuyenMai ? (
+                                                <>
+                                                    <span className={cx('price-old')}>
+                                                        {DinhDangTien(km.PriceProduct)}đ
+                                                    </span>
+                                                    <span className={cx('price-current')}>
+                                                        {DinhDangTien(km.GiaBanRa)}đ
+                                                    </span>
+                                                </>
+                                            ) : (
+                                                <span className={cx('price-current')}>
+                                                    {DinhDangTien(km.GiaBanRa)}đ
+                                                </span>
+                                            )}
+                                        </div>
+                                        <Rate disabled defaultValue={TrungbinhDanhGia} />
+                                        <div className={cx('order-item')}>
+                                            <ButtonCustom primary onClick={(event) => handlecard(km, event)}>
+                                                Thêm vào giỏ hàng
+                                            </ButtonCustom>
+                                        </div>
+                                        {km.KhuyenMai ? (
+                                            <div className={cx('sale-off')}>
+                                                <span className={cx('sale-off-label')}>GIẢM </span>
+                                                <span className={cx('sale-off-percent')}>{km.KhuyenMai}%</span>
+                                            </div>
+                                        ) : (
+                                            ''
+                                        )}
+                                    </Card>
+                                </div>
+                            );
+                        })}
+                    </Carousel>
+                </div>
+            </Small>
+            <XSmall>
+                <div style={{ margin: '5px' }}>
+                    <Carousel id="carousel-item" ref={carouselRef} slidesToShow={1} style={{ width: '100%' }}>
+                        {data.map((km) => {
+                            const Danhgia = danhgia.filter((state) => state.Product === km._id);
+                            const LuotDanhGia = Danhgia.filter((item) => item.Rate !== 0);
+                            const TongDiemDanhGia = LuotDanhGia.reduce((sum, item) => sum + item.Rate, 0);
+                            const TrungbinhDanhGia = LuotDanhGia.length > 0 ? TongDiemDanhGia / LuotDanhGia.length : 0;
+
+                            return (
+                                <div
+                                    key={km._id} // Sử dụng km._id làm key duy nhất
+                                    style={{
+                                        margin: '20px',
+                                        position: 'relative',
+                                        width: '100%',
+                                    }}
+                                >
+                                    <div className={cx('promotion-mobile')}>
+                                        <div>sfsadf</div>
+                                        <div>
+                                        <div className={cx('name-Product')}>
+                                            <span>{km.nameProduct}</span>
+                                        </div>
+                                        <div className={cx('price-Product')}>
+                                            {km.KhuyenMai ? (
+                                                <>
+                                                    <span className={cx('price-old')}>
+                                                        {DinhDangTien(km.PriceProduct)}đ
+                                                    </span>
+                                                    <span className={cx('price-current')}>
+                                                        {DinhDangTien(km.GiaBanRa)}đ
+                                                    </span>
+                                                </>
+                                            ) : (
+                                                <span className={cx('price-current')}>
+                                                    {DinhDangTien(km.GiaBanRa)}đ
+                                                </span>
+                                            )}
+                                        </div>
+                                        <Rate disabled defaultValue={TrungbinhDanhGia} />
+                                        <div className={cx('order-item')}>
+                                            <ButtonCustom primary onClick={(event) => handlecard(km, event)}>
+                                                Thêm vào giỏ hàng
+                                            </ButtonCustom>
+                                        </div>
+                                        {km.KhuyenMai ? (
+                                            <div className={cx('sale-off')}>
+                                                <span className={cx('sale-off-label')}>GIẢM </span>
+                                                <span className={cx('sale-off-percent')}>{km.KhuyenMai}%</span>
+                                            </div>
+                                        ) : (
+                                            ''
+                                        )}
+                                        </div>
+                                    </div>
+                                </div>
+                            );
+                        })}
+                    </Carousel>
+                </div>
+                <style jsx>{`
+                    .ant-carousel .slick-list .slick-slide.slick-active {
+                        display: none !important;
+                        justify-content: none;
+                    }
+                `}</style>
+            </XSmall>
             <style jsx>{`
                 #carousel-item.ant-carousel .slick-dots-bottom {
                     bottom: -40px !important;
@@ -197,6 +471,10 @@ function CarouselItem({ data }) {
                 }
                 .ant-carousel .slick-dots li.slick-active {
                     width: 15px !important;
+                }
+                .ant-carousel .slick-list .slick-slide.slick-active {
+                    display: flex;
+                    justify-content: center;
                 }
                 .ant-carousel .slick-dots li button {
                     width: 15px !important; /* Kích thước chấm */

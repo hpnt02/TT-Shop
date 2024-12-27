@@ -11,6 +11,7 @@
     display: -webkit-box; /* Hỗ trợ cho Safari và Chrome cũ */
     -webkit-box-orient: vertical; /* Định hướng hộp dọc */
     -webkit-line-clamp: 2; /* Giới hạn văn bản ở 2 dòng */
+    line-clamp: 2;
     overflow: hidden; /* Ẩn văn bản thừa */
     text-overflow: ellipsis; /* Thêm dấu ba chấm */
     white-space: normal; /* Cho phép xuống dòng */
@@ -82,4 +83,11 @@
     position: relative;
     top: 6px;
     font-weight: 600;
+}
+
+.promotion-mobile{
+    display: grid;
+    grid-template-columns: 30% 70%;
+    margin: 10px;
+    height: 100px;
 }

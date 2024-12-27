@@ -88,7 +88,7 @@ export const logOut = async (dispatch, navigate, id, accessToken, axiosJWT) => {
             },
         });
         dispatch(logoutSuccess());
-        navigate('/login');
+        navigate('/login',{ state: { id: true } });
     } catch (err) {
         dispatch(logoutFailed());
     }

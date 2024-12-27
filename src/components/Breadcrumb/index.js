@@ -42,10 +42,10 @@ function BreadcrumbMenu() {
                 Home 
             </NavLink>
             <span><FontAwesomeIcon icon={faChevronRight}/></span>
-            {result.map((item) => {
+            {result.map((item, index) => {
                 const isActive = location.pathname === item.to;
                 return (
-                    <NavLink to={item.to} className={cx('breadcrumb-item', { disabled: isActive })}>
+                    <NavLink to={item.to} key={index} className={cx('breadcrumb-item', { disabled: isActive })}>
                         {item.title} {isActive ? ' ' : '>'}
                     </NavLink>
                 );

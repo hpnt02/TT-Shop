@@ -5,7 +5,8 @@
 }
 
 .layout-footer{
-    display: grid;
-    grid-template-columns: 30% 20% 25% 25%;
+   display: flex;
+   justify-content: space-between;
+   flex-wrap: wrap;
 }
 

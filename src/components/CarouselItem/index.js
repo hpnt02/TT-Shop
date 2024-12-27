@@ -324,7 +324,7 @@ function CarouselItem({ data }) {
             </Medium>
             <Small>
                 <div style={{ margin: '5px' }}>
-                    <Carousel id="carousel-item" ref={carouselRef} slidesToShow={2} style={{ width: '100%' }} autoplay>
+                    <Carousel id="carousel-item" ref={carouselRef} slidesToShow={2} style={{ width: '100%' }}>
                         {data.map((km) => {
                             const Danhgia = danhgia.filter((state) => state.Product === km._id);
                             const LuotDanhGia = Danhgia.filter((item) => item.Rate !== 0);
@@ -391,7 +391,7 @@ function CarouselItem({ data }) {
             </Small>
             <XSmall>
                 <div style={{ margin: '5px' }}>
-                    <Carousel id="carousel-item" ref={carouselRef} slidesToShow={1} style={{ width: '100%' }}>
+                    <Carousel id="carousel-item__mobile" ref={carouselRef} slidesToShow={1} style={{ width: '100%' }}>
                         {data.map((km) => {
                             const Danhgia = danhgia.filter((state) => state.Product === km._id);
                             const LuotDanhGia = Danhgia.filter((item) => item.Rate !== 0);
@@ -403,46 +403,49 @@ function CarouselItem({ data }) {
                                     key={km._id} // Sử dụng km._id làm key duy nhất
                                     style={{
                                         margin: '20px',
-                                        position: 'relative',
+                                      
                                         width: '100%',
                                     }}
                                 >
                                     <div className={cx('promotion-mobile')}>
-                                        <div>sfsadf</div>
-                                        <div>
-                                        <div className={cx('name-Product')}>
-                                            <span>{km.nameProduct}</span>
+                                        <div className={cx('promotion-mobile__left')}>
+                                             <img alt="example" src={km.Image.Image1} /> 
+                                                
                                         </div>
-                                        <div className={cx('price-Product')}>
-                                            {km.KhuyenMai ? (
-                                                <>
-                                                    <span className={cx('price-old')}>
-                                                        {DinhDangTien(km.PriceProduct)}đ
-                                                    </span>
+                                        <div className={cx('promotion-mobile__right')}>
+                                            <div className={cx('name-Product')}>
+                                                <span>{km.nameProduct}</span>
+                                            </div>
+                                            <div className={cx('price-Product')}>
+                                                {km.KhuyenMai ? (
+                                                    <>
+                                                        <span className={cx('price-old')}>
+                                                            {DinhDangTien(km.PriceProduct)}đ
+                                                        </span>
+                                                        <span className={cx('price-current')}>
+                                                            {DinhDangTien(km.GiaBanRa)}đ
+                                                        </span>
+                                                    </>
+                                                ) : (
                                                     <span className={cx('price-current')}>
                                                         {DinhDangTien(km.GiaBanRa)}đ
                                                     </span>
-                                                </>
-                                            ) : (
-                                                <span className={cx('price-current')}>
-                                                    {DinhDangTien(km.GiaBanRa)}đ
-                                                </span>
-                                            )}
-                                        </div>
-                                        <Rate disabled defaultValue={TrungbinhDanhGia} />
-                                        <div className={cx('order-item')}>
-                                            <ButtonCustom primary onClick={(event) => handlecard(km, event)}>
-                                                Thêm vào giỏ hàng
-                                            </ButtonCustom>
-                                        </div>
-                                        {km.KhuyenMai ? (
-                                            <div className={cx('sale-off')}>
-                                                <span className={cx('sale-off-label')}>GIẢM </span>
-                                                <span className={cx('sale-off-percent')}>{km.KhuyenMai}%</span>
+                                                )}
                                             </div>
-                                        ) : (
-                                            ''
-                                        )}
+                                            <Rate disabled defaultValue={TrungbinhDanhGia} />
+                                            <div className={cx('order-item')}>
+                                                <ButtonCustom primary onClick={(event) => handlecard(km, event)}>
+                                                    Thêm vào giỏ hàng
+                                                </ButtonCustom>
+                                            </div>
+                                            {km.KhuyenMai ? (
+                                                <div className={cx('sale-off')}>
+                                                    <span className={cx('sale-off-label')}>GIẢM </span>
+                                                    <span className={cx('sale-off-percent')}>{km.KhuyenMai}%</span>
+                                                </div>
+                                            ) : (
+                                                ''
+                                            )}
                                         </div>
                                     </div>
                                 </div>
@@ -451,10 +454,14 @@ function CarouselItem({ data }) {
                     </Carousel>
                 </div>
                 <style jsx>{`
-                    .ant-carousel .slick-list .slick-slide.slick-active {
+                   #carousel-item__mobile.ant-carousel .ant-carousel .slick-list .slick-slide.slick-active {
                         display: none !important;
                         justify-content: none;
                     }
+
+                     #carousel-item__mobile.ant-carousel .slick-dots-bottom {
+                        bottom: -25px;
+                     }
                 `}</style>
             </XSmall>
             <style jsx>{`
@@ -472,7 +479,7 @@ function CarouselItem({ data }) {
                 .ant-carousel .slick-dots li.slick-active {
                     width: 15px !important;
                 }
-                .ant-carousel .slick-list .slick-slide.slick-active {
+                #carousel-item.ant-carousel .slick-list .slick-slide.slick-active {
                     display: flex;
                     justify-content: center;
                 }

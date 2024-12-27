@@ -89,5 +89,42 @@
     display: grid;
     grid-template-columns: 30% 70%;
     margin: 10px;
-    height: 100px;
+    height: 130px;
+}
+
+.promotion-mobile__left{
+    height: 130px;
+}
+
+.promotion-mobile__left img{
+    width: 100%;
+    height: 100%;
+}
+
+.promotion-mobile__right{
+    padding-left: 10px;
+}
+
+.promotion-mobile__right .name-Product{
+    height: 25px;
+
+}
+
+.promotion-mobile__right .name-Product span{
+    display: block;
+    display: -webkit-box; /* Hỗ trợ cho Safari và Chrome cũ */
+    -webkit-box-orient: vertical; /* Định hướng hộp dọc */
+    -webkit-line-clamp: 1; /* Giới hạn văn bản ở 2 dòng */
+    line-clamp: 1;
+    overflow: hidden; /* Ẩn văn bản thừa */
+    text-overflow: ellipsis; /* Thêm dấu ba chấm */
+    white-space: normal; /* Cho phép xuống dòng */
+}
+
+.promotion-mobile__right .price-Product{
+    margin: 0;
+}
+
+.promotion-mobile__right button{
+    margin-top: 10px;
 }

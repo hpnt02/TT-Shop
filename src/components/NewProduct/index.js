@@ -60,7 +60,7 @@ function NewProduct({ data }) {
             }
         } else {
             localStorage.setItem('http', location.pathname);
-            console.log('đại chỉ ip', location.pathname);
+
             navigate(config.routes.login);
         }
     };
@@ -73,7 +73,7 @@ function NewProduct({ data }) {
     return (
         <>
             <TabletAndDestopLarge>
-                <Carousel fade autoplaySpeed={3000}>
+                <Carousel fade autoplay>
                     {newProducts.map((sp, index) => {
                         const Danhgia = danhgia.filter((state) => state.Product === sp._id);
                         const LuotDanhGia = Danhgia.filter((item) => item.Rate !== 0);
@@ -141,7 +141,7 @@ function NewProduct({ data }) {
             </TabletAndDestopLarge>
 
             <MobileAndTablet>
-                <Carousel fade autoplaySpeed={3000}>
+                <Carousel fade autoplay>
                     {newProducts.map((sp, index) => {
                         const Danhgia = danhgia.filter((state) => state.Product === sp._id);
                         const LuotDanhGia = Danhgia.filter((item) => item.Rate !== 0);

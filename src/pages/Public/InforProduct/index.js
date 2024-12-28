@@ -11,6 +11,7 @@ import { DanhGia, SanPham } from '~/redux/API/api';
 import CarouselItem from '~/components/CarouselItem';
 import Evaluate from '~/components/Evaluate';
 import BreadcrumbMenu from '~/components/Breadcrumb';
+import { ExtraLarge, XSmall } from '~/components/Responsive';
 
 const conicColors = {
     '0%': 'var(--primary)',
@@ -24,6 +25,13 @@ const DinhDangTien = (amount) => {
         maximumFractionDigits: 0,
     }).format(amount);
 };
+
+function getRandomItems(arr, maxItems) {
+    // Trộn mảng
+    const shuffled = arr.sort(() => 0.5 - Math.random());
+    // Cắt mảng để lấy tối đa maxItems phần tử
+    return shuffled.slice(0, maxItems);
+}
 
 const contentStyle = {
     margin: 0,
@@ -61,8 +69,14 @@ function InforProduct() {
     const TongDiemDanhGia = danhgiasanpham.reduce((sum, item) => sum + item.Rate, 0);
     const trungbinhDG = Math.ceil((TongDiemDanhGia / danhgiasanpham.length) * 10) / 10;
 
-    const SPcungloai = sanpham.filter((state) => state.LoaiSanPham === id.LoaiSanPham);
-    const SPcungthuonghieu = sanpham.filter((state) => state.NhaCungCap === id.NhaCungCap);
+    const SPcungloai = getRandomItems(
+        sanpham.filter((state) => state.LoaiSanPham === id.LoaiSanPham),
+        10,
+    );
+    const SPcungthuonghieu = getRandomItems(
+        sanpham.filter((state) => state.NhaCungCap === id.NhaCungCap),
+        10,
+    );
     //===================================Đanh Giá chi tiêt========================================
     const danhgia5 = danhgiasanpham.filter((state) => state.Rate === 5);
     const tiledanhgia5 = (danhgia5.length / danhgiasanpham.length) * 100;
@@ -79,10 +93,10 @@ function InforProduct() {
     //============================================================================================
     //=====================================================================================
     //Kiểm tra xem khách hàng đã mua sản phẩm đó chưa
-    const hoadon = useSelector((state) => state.hoadon?.hoadon?.hoadon);
+    const hoadon = useSelector((state) => state.hoadon?.hoadon?.hoadon) || [];
     const chitiethoadon = useSelector((state) => state.chitiethoadon?.chitiethoadon?.chitiethoadon) || [];
     const hoaDonUser =
-        hoadon.filter(
+        hoadon?.filter(
             (state) => state.KhachHang === user?.KhachHang?._id && state.HoanThanh === true && state.TrangThai === true,
         ) || [];
     const sanPhamdamua = chitiethoadon.filter((state) => hoaDonUser.some((item) => item.IDHoaDon === state.IDHoaDon));
@@ -141,7 +155,7 @@ function InforProduct() {
                     <p> Thông tin sản phẩm</p>
                 </div>
             </div>
-            <BreadcrumbMenu/>
+            <BreadcrumbMenu />
             <div className={cx('infor-product')}>
                 <div className={cx('infor-product__left')}>
                     <div>
@@ -334,6 +348,7 @@ function InforProduct() {
                                                 </div>
                                             </Flex>
                                         </div>
+
                                         <div className={cx('evaluate-right')}>
                                             {sanPhamTrung ? (
                                                 <div>
@@ -365,6 +380,15 @@ function InforProduct() {
                         },
                     ]}
                 />
+                <XSmall>
+                    <style jsx>{`
+                        .ant-tabs .ant-tabs-tab {
+                            font-size: 16px !important;
+                            color: white;
+                            font-weight: 700;
+                        }
+                    `}</style>
+                </XSmall>
                 <style jsx>{`
                     .ant-tabs > .ant-tabs-nav .ant-tabs-nav-wrap {
                         background-color: #0046ff;
@@ -399,16 +423,18 @@ function InforProduct() {
             </div>
 
             <div className={cx('SPCL')}>
-                <h2 style={{ textAlign: 'center', fontStyle: 'italic', paddingTop: '10px' }}>Sản phẩm cùng loại</h2>
-                <div style={{ marginTop: '-30px', paddingBottom: '20px' }}>
+                <div className={cx('title-carousel')}>
+                    <h2>Sản phẩm cùng loại</h2>
+                </div>
+                <div style={{ paddingBottom: '50px' }}>
                     <CarouselItem data={SPcungloai} />
                 </div>
             </div>
             <div className={cx('SPCL')}>
-                <h2 style={{ textAlign: 'center', fontStyle: 'italic', paddingTop: '10px' }}>
-                    Sản phẩm cùng thương hiệu
-                </h2>
-                <div style={{ marginTop: '-30px', paddingBottom: '20px' }}>
+                <div className={cx('title-carousel')}>
+                    <h2>Thương hiệu</h2>
+                </div>
+                <div style={{ paddingBottom: '50px' }}>
                     <CarouselItem data={SPcungthuonghieu} />
                 </div>
             </div>

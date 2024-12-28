@@ -4,7 +4,7 @@ import config from '~/config';
 import classNames from 'classnames/bind';
 import styles from './Breadcrumb.module.scss';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import {  faChevronRight, faHome } from '@fortawesome/free-solid-svg-icons';
+import { faChevronRight, faHome } from '@fortawesome/free-solid-svg-icons';
 const cx = classNames.bind(styles);
 function BreadcrumbMenu() {
     const location = useLocation();
@@ -18,7 +18,6 @@ function BreadcrumbMenu() {
             setCurrentIndex((prevIndex) => prevIndex + 1);
         }
     }, [location.pathname, pathnames, currentIndex]);
-    console.log("pathnames",pathnames)
     const result = pathnames
         .slice(1)
         .map((item) => {
@@ -26,9 +25,9 @@ function BreadcrumbMenu() {
                 return { title: 'Home', to: config.routes.home };
             } else if (item === config.routes.dssp) {
                 return { title: 'Sản phẩm', to: config.routes.dssp };
-            }else if(item === config.routes.ttsp) {
+            } else if (item === config.routes.ttsp) {
                 return { title: 'Thông tin sản phẩm', to: config.routes.ttsp };
-            }else if(item === config.routes.giohang) {
+            } else if (item === config.routes.giohang) {
                 return { title: 'Giỏ hàng', to: config.routes.giohang };
             }
             return null; // Hoặc có thể xử lý trường hợp khác
@@ -39,9 +38,11 @@ function BreadcrumbMenu() {
         <div className={cx('breadcrumb')}>
             <NavLink to={config.routes.home}>
                 <FontAwesomeIcon icon={faHome} style={{ paddingRight: '5px' }} />
-                Home 
+                Home
             </NavLink>
-            <span><FontAwesomeIcon icon={faChevronRight}/></span>
+            <span>
+                <FontAwesomeIcon icon={faChevronRight} />
+            </span>
             {result.map((item, index) => {
                 const isActive = location.pathname === item.to;
                 return (

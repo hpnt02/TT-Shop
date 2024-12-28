@@ -283,7 +283,7 @@ export const KhachHang = async (dispatch, accessToken) => {
 };
 
 //===================================Chi tiết hóa đơn===========================================
-export const ChiTietHoaDon = async (dispatch, accessToken) => {
+export const ChiTietHoaDon = async (dispatch) => {
     dispatch(getChiTietHoaDonStart());
     try {
         const res = await axios.get(`${process.env.REACT_APP_BASE_URL}/admin/chitiethoadon`);

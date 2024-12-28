@@ -76,7 +76,7 @@ function CarouselItem({ data }) {
     const newGiohang =
         chitiethoadon?.filter((state) => state.KhachHang === user.KhachHang?._id && state.IDHoaDon === null) || [];
     const location = useLocation();
-    const handlecard = (km, event) => {
+    const handlecard = async (km, event) => {
         event.stopPropagation();
         if (user) {
             const sanPhamTrung = newGiohang.some((item) => item.Product === km._id);
@@ -88,8 +88,8 @@ function CarouselItem({ data }) {
                     Product: km._id,
                 };
                 // Thực hiện thêm sản phẩm vào giỏ hàng
-                TMCTHD(data, dispatch);
-                ChiTietHoaDon(dispatch);
+                await TMCTHD(data, dispatch);
+                await ChiTietHoaDon(dispatch);
             } else {
                 // Lấy thông tin sản phẩm đã tồn tại
                 const sanPhamtrung = newGiohang.find((item) => item.Product === km._id);
@@ -99,12 +99,11 @@ function CarouselItem({ data }) {
                     PriceProduct: sanPhamtrung.PriceProduct,
                     Product: sanPhamtrung.Product,
                 };
-                UpdateCTHD(data, dispatch, sanPhamtrung._id);
-                ChiTietHoaDon(dispatch);
+                await UpdateCTHD(data, dispatch, sanPhamtrung._id);
+                await ChiTietHoaDon(dispatch);
             }
         } else {
             localStorage.setItem('http', location.pathname);
-            console.log('đại chỉ ip', location.pathname);
             navigate(config.routes.login);
         }
     };
@@ -390,8 +389,14 @@ function CarouselItem({ data }) {
                 </div>
             </Small>
             <XSmall>
-                <div style={{ margin: '5px' }}>
-                    <Carousel id="carousel-item__mobile" ref={carouselRef} slidesToShow={1} style={{ width: '100%' }}>
+                <div style={{ margin: '5px', cursor: 'pointer' }}>
+                    <Carousel
+                        id="carousel-item__mobile"
+                        ref={carouselRef}
+                        slidesToShow={1}
+                        style={{ width: '100%' }}
+                        autoplay
+                    >
                         {data.map((km) => {
                             const Danhgia = danhgia.filter((state) => state.Product === km._id);
                             const LuotDanhGia = Danhgia.filter((item) => item.Rate !== 0);
@@ -403,14 +408,16 @@ function CarouselItem({ data }) {
                                     key={km._id} // Sử dụng km._id làm key duy nhất
                                     style={{
                                         margin: '20px',
-                                      
+
                                         width: '100%',
                                     }}
                                 >
-                                    <div className={cx('promotion-mobile')}>
+                                    <div
+                                        className={cx('promotion-mobile')}
+                                        onClick={(event) => handleCardClick(km, event)}
+                                    >
                                         <div className={cx('promotion-mobile__left')}>
-                                             <img alt="example" src={km.Image.Image1} /> 
-                                                
+                                            <img alt="example" src={km.Image.Image1} />
                                         </div>
                                         <div className={cx('promotion-mobile__right')}>
                                             <div className={cx('name-Product')}>
@@ -454,14 +461,14 @@ function CarouselItem({ data }) {
                     </Carousel>
                 </div>
                 <style jsx>{`
-                   #carousel-item__mobile.ant-carousel .ant-carousel .slick-list .slick-slide.slick-active {
+                    #carousel-item__mobile.ant-carousel .ant-carousel .slick-list .slick-slide.slick-active {
                         display: none !important;
                         justify-content: none;
                     }
 
-                     #carousel-item__mobile.ant-carousel .slick-dots-bottom {
+                    #carousel-item__mobile.ant-carousel .slick-dots-bottom {
                         bottom: -25px;
-                     }
+                    }
                 `}</style>
             </XSmall>
             <style jsx>{`

@@ -118,6 +118,7 @@ function CartShopping() {
     const chitiethoadon = useSelector((state) => state.chitiethoadon?.chitiethoadon?.chitiethoadon) || [];
     const newGiohang =
         chitiethoadon.filter((state) => state.KhachHang === user?.KhachHang?._id && state.IDHoaDon === null) || [];
+
     const { success } = useSelector((state) => state.hoadon?.tmhd);
 
     const dispatch = useDispatch();
@@ -139,7 +140,7 @@ function CartShopping() {
     const tongThanhTien = newData.reduce((total, item) => {
         return total + parseInt(item.TotalPriceProduct.replace(/\./g, ''), 10);
     }, 0);
-   
+
     const onFinish = (values) => {
         if (values.PhuongThucThanhToan) {
             const data = {
@@ -147,7 +148,7 @@ function CartShopping() {
                 bankCode: '',
                 language: '',
             };
-            TMPay( data,dispatch)
+            TMPay(data, dispatch);
         } else {
             const data = {
                 TenNguoiNhan: values.TenNguoiNhan,
@@ -203,7 +204,7 @@ function CartShopping() {
                     alt="Mô tả ảnh"
                 />
             </div>
-            <BreadcrumbMenu/>
+            <BreadcrumbMenu />
             {newData.length > 0 ? (
                 <div className={cx('cart')}>
                     <div className={cx('infor-cart')}>

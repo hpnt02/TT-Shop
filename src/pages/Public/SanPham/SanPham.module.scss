@@ -1,39 +1,36 @@
-
-
-
-.list-product{
+.list-product {
     display: grid;
     grid-template-columns: 21% 80%;
     /* gap: 0%; */
-    margin: 10px 28px
+    margin: 10px 28px;
 }
 
-.inner{
+.inner {
     border: 2px solid #b8b9a9;
 }
 
-.danhmuc-brand{
+.danhmuc-brand {
     color: white;
     background-color: var(--primary);
     line-height: 40px;
     border-bottom: 2px solid #b8b9a9;
 }
 
-.danhmuc-brand span{
+.danhmuc-brand span {
     font-size: 20px;
     padding: 10px;
 }
 
-.price{
+.price {
     padding-left: 10px;
     font-family: 'Times New Roman', Times, serif;
 }
 
-.price span{
+.price span {
     font-weight: 600;
 }
 
-.sort{
+.sort {
     display: flex;
     align-items: center;
     width: 100%;
@@ -41,14 +38,47 @@
     margin-bottom: 15px;
     justify-content: space-between;
     padding: 7px;
+    flex-wrap: wrap;
 }
 
-.sort-product{
+.sort-product {
     display: flex;
     align-items: center;
 }
 
-.sort span{
+.sort span {
     font-size: 15px;
     padding: 0 10px;
+}
+
+.sort-tablet {
+    width: 98%;
+    margin: 10px;
+    line-height: 40px;
+}
+
+.select {
+    margin: 10px 10px;
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.select-item {
+    margin-right: 10px;
+}
+
+.select-item__left {
+    display: grid;
+    grid-template-columns: 31% 69%;
+    align-items: center;
+    line-height: 40px;
+}
+
+.select-item__right {
+    width: 320px;
+}
+.select-item__left span,
+.select-item__right span {
+    font-size: 15px;
 }

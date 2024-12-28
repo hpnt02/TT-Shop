@@ -1,4 +1,3 @@
-
 .wrapper {
     --search-border-radius: 92px;
     --search-height: 46px;
@@ -6,7 +5,7 @@
     --search-button-width: 52px;
     position: fixed;
     top: 0;
-    width:100%;
+    width: 100%;
     height: 80px;
     box-shadow: 0px 1px 1px rgba(88, 64, 64, 0.12);
     background-color: transparent;
@@ -16,12 +15,12 @@
 
 @keyframes backgroundSlide {
     0% {
-        height: 80px; 
+        height: 80px;
         background-color: transparent;
     }
     100% {
-       height: 60px;
-       background-color: #323232;
+        height: 60px;
+        background-color: #323232;
     }
 }
 
@@ -39,7 +38,7 @@
 
 .inner {
     height: 100%;
-    width:100%;
+    width: 100%;
     padding: 0 var(--default-layout-horizontal-spacer);
     display: flex;
     align-items: center;
@@ -52,13 +51,13 @@
     justify-content: space-between;
 }
 
-.header-logo{
+.header-logo {
     position: relative;
     height: 100%;
     text-align: center;
     z-index: 1;
     margin: 0 auto;
-    overflow: hidden
+    overflow: hidden;
 }
 
 .infor-header {
@@ -75,9 +74,7 @@
     cursor: pointer;
 }
 
-
-
-.infor-user{
+.infor-user {
     display: flex;
     align-items: center;
     position: absolute;
@@ -86,10 +83,9 @@
     right: 0;
     padding-left: 80px;
     padding-right: 20px;
-
 }
 
-.header-left{
+.header-left {
     position: absolute;
     width: 50%;
     left: 0;
@@ -100,40 +96,39 @@
     padding-left: 20px;
 }
 .header-icon,
-.header-icon span{
+.header-icon span {
     font-size: 20px;
     width: 20px;
 
     color: white;
-    &:hover{
+    &:hover {
         cursor: pointer;
-        color: #EFC65A;
+        color: #efc65a;
     }
 }
 
 @keyframes Widthmenu {
     0% {
         width: 0;
-        background-color: #EFC65A;
+        background-color: #efc65a;
     }
     100% {
         width: 100%;
-        background-color: #EFC65A;
+        background-color: #efc65a;
     }
 }
-
 
 .header-menu {
     cursor: pointer;
     position: relative; // Để sử dụng position absolute cho ::before
     color: white;
     &:hover {
-        color: #EFC65A;
+        color: #efc65a;
         &::after {
             content: ''; // Thêm nội dung rỗng
             width: 100%; // Độ rộng bằng với phần tử
             height: 3px; // Độ dày của đường kẻ
-            background-color: #EFC65A; // Màu sắc của đường kẻ
+            background-color: #efc65a; // Màu sắc của đường kẻ
             position: absolute; // Đặt vị trí tuyệt đối
             bottom: -2px; // Đặt đường kẻ bên dưới
             left: 0; // Căn trái
@@ -142,51 +137,50 @@
     }
 }
 
-
 //Giao diện mobile
 
-.infor-user-mobile{
+.infor-user-mobile {
     justify-content: flex-end !important;
 }
 
-.header-icon-mobile{
+.header-icon-mobile {
     margin-right: 20px !important;
 }
 
-.wrapper-mobile{
-    background-color: #323232; 
+.wrapper-mobile {
+    background-color: #323232;
 }
 
-.header-search{
-    height:100%;
+.header-search {
+    height: 100%;
     display: flex;
     justify-content: center;
     align-items: center;
     z-index: 1;
     margin: 0 auto;
-    overflow: hidden
+    overflow: hidden;
 }
 
-.header-left-mobile{
+.header-left-mobile {
     height: 100%;
     justify-content: flex-start !important;
 }
 
-.header-left-mobile a{
+.header-left-mobile a {
     height: 100%;
     padding-left: 50px;
 }
 
-@keyframes fadeIn{
-    from{
+@keyframes fadeIn {
+    from {
         opacity: 0;
     }
-    to{
+    to {
         opacity: 1;
     }
 }
 
-.modal{
+.modal {
     margin-top: 80px;
     z-index: 999;
     position: fixed;
@@ -194,32 +188,37 @@
     right: 0;
     bottom: 0;
     left: 0;
-    background-color: rgba(0, 0, 0, 0.3);
     animation: fadeIn linear 1s;
+    background-color: rgba(0, 0, 0, 0.3);
 }
 
-.menu{
+.menu {
     width: 300px;
     height: 100vh;
     background-color: white;
 }
 
-.wrapper-small{
-    height: 60px !important;
-    background-color: #323232; 
+.modal-right {
+    width: 100%;
+    height: 100vh;
 }
 
-.modal-small{
+.wrapper-small {
+    height: 60px !important;
+    background-color: #323232;
+}
+
+.modal-small {
     margin-top: 60px !important;
 }
 
-.search-small{
-    background-color: #323232; 
+.search-small {
+    background-color: #323232;
     padding: 10px 0;
 }
 
 //=================XSmall=========================
-.infor-user-xsmall{
+.infor-user-xsmall {
     justify-content: end !important;
     padding-left: 0 !important;
 }

@@ -46,7 +46,7 @@ function Home() {
                         <Carousel arrows>
                             <div className={cx('carousel-img')}>
                                 <img
-                                style={imgExtraLarge}
+                                    style={imgExtraLarge}
                                     src="https://res.cloudinary.com/di56pogid/image/upload/v1730020209/1_jepibr.jpg"
                                     alt="Mô tả ảnh"
                                 />
@@ -98,7 +98,7 @@ function Home() {
                             </div>
                             <div className={cx('carousel-img')}>
                                 <img
-                                 style={imgLarge}
+                                    style={imgLarge}
                                     src="https://res.cloudinary.com/di56pogid/image/upload/v1730020320/2_rg7za2.jpg"
                                     alt="Mô tả ảnh"
                                 />
@@ -115,8 +115,8 @@ function Home() {
                         </Carousel>
                     </div>
                 </Large>
-                   {/* Giao điện từ 768px tới 991px */}
-                   <Medium>
+                {/* Giao điện từ 768px tới 991px */}
+                <Medium>
                     <div className={cx('carousel-medium')}>
                         <Carousel arrows>
                             <div className={cx('carousel-img')}>
@@ -137,7 +137,7 @@ function Home() {
                             </div>
                             <div className={cx('carousel-img')}>
                                 <img
-                                 style={imgLarge}
+                                    style={imgLarge}
                                     src="https://res.cloudinary.com/di56pogid/image/upload/v1730020320/2_rg7za2.jpg"
                                     alt="Mô tả ảnh"
                                 />
@@ -154,8 +154,8 @@ function Home() {
                         </Carousel>
                     </div>
                 </Medium>
-                  {/* Giao điện từ 576px tới 767px */}
-                  <Small>
+                {/* Giao điện từ 576px tới 767px */}
+                <Small>
                     <div className={cx('carousel-small')}>
                         <Carousel arrows>
                             <div className={cx('carousel-img')}>
@@ -176,7 +176,7 @@ function Home() {
                             </div>
                             <div className={cx('carousel-img')}>
                                 <img
-                                 style={imgLarge}
+                                    style={imgLarge}
                                     src="https://res.cloudinary.com/di56pogid/image/upload/v1730020320/2_rg7za2.jpg"
                                     alt="Mô tả ảnh"
                                 />
@@ -193,8 +193,8 @@ function Home() {
                         </Carousel>
                     </div>
                 </Small>
-                  {/* Giao điện dưới 576px */}
-                  <XSmall>
+                {/* Giao điện dưới 576px */}
+                <XSmall>
                     <div className={cx('carousel-Xsmall')}>
                         <Carousel arrows>
                             <div className={cx('carousel-img')}>
@@ -215,7 +215,7 @@ function Home() {
                             </div>
                             <div className={cx('carousel-img')}>
                                 <img
-                                 style={imgLarge}
+                                    style={imgLarge}
                                     src="https://res.cloudinary.com/di56pogid/image/upload/v1730020320/2_rg7za2.jpg"
                                     alt="Mô tả ảnh"
                                 />
@@ -237,10 +237,10 @@ function Home() {
                         height: 100%;
                     }
 
-                    .ant-carousel .slick-slider{
-                          height: 100%;
+                    .ant-carousel .slick-slider {
+                        height: 100%;
                     }
-                    
+
                     .ant-carousel .slick-dots li {
                         width: 15px !important;
                         margin: 0 5px;

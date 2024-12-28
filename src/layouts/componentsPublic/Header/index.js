@@ -12,10 +12,8 @@ import {
 } from '@fortawesome/free-solid-svg-icons';
 import React, { useEffect, useState } from 'react';
 import styles from './Header.module.scss';
-
 import MenuCustom from '~/components/Popper/Menu';
 import 'tippy.js/dist/tippy.css';
-
 import Image from '~/components/Image';
 import { useDispatch, useSelector } from 'react-redux';
 import { createAxios } from '~/components/createInstance';
@@ -97,22 +95,22 @@ function Header() {
                 navigate(config.routes.lsdh);
                 break;
             case 'Login':
-                if (window.location.href !== "http://localhost:3000/login") {
+                if (window.location.href !== 'http://localhost:3000/login') {
                     // Lấy địa chỉ hiện tại nếu không ở trang login
                     const currentPathname = window.location.pathname;
-                    localStorage.setItem('http', currentPathname)
+                    localStorage.setItem('http', currentPathname);
                 } else {
-                    console.log("Không lấy địa chỉ hiện tại vì đang ở trang login.");
+                    console.log('Không lấy địa chỉ hiện tại vì đang ở trang login.');
                 }
                 navigate(config.routes.login, { state: { id: true } });
                 break;
             case 'Register':
-                if (window.location.href !== "http://localhost:3000/login") {
+                if (window.location.href !== 'http://localhost:3000/login') {
                     // Lấy địa chỉ hiện tại nếu không ở trang login
-                 const currentPathname = window.location.pathname;
-               localStorage.setItem('http', currentPathname)
+                    const currentPathname = window.location.pathname;
+                    localStorage.setItem('http', currentPathname);
                 } else {
-                    console.log("Không lấy địa chỉ hiện tại vì đang ở trang login.");
+                    console.log('Không lấy địa chỉ hiện tại vì đang ở trang login.');
                 }
                 navigate(config.routes.login, { state: { id: false } });
                 break;
@@ -218,8 +216,10 @@ function Header() {
                 console.log('Unknown item');
         }
     };
-    
 
+    const handleMenuModal = () => {
+        dispatch(set({ sidebarShow: !sidebarShow }));
+    };
 
     useEffect(() => {
         Account(dispatch);
@@ -337,34 +337,37 @@ function Header() {
                     </header>
                     {!sidebarShow ? (
                         <div className={cx('modal')}>
-                            <div className={cx('menu')}>
-                                <Menu
-                                    onClick={onClickMenu}
-                                    style={{
-                                        width: 300,
-                                    }}
-                                    mode="inline"
-                                    items={itemsMenu}
-                                />
+                            <div style={{ display: 'flex' }}>
+                                <div className={cx('menu')}>
+                                    <Menu
+                                        onClick={onClickMenu}
+                                        style={{
+                                            width: 300,
+                                        }}
+                                        mode="inline"
+                                        items={itemsMenu}
+                                    />
+                                </div>
+                                <div className={cx('modal-right')} onClick={handleMenuModal}></div>
                             </div>
                         </div>
                     ) : null}
                 </>
             </TabletAndDestop>
-             {/* ******************Giao diện Medium*********************  */}
-             <Small>
+            {/* ******************Giao diện Medium*********************  */}
+            <Small>
                 <>
-                    <header className={cx('wrapper','wrapper-small')}>
+                    <header className={cx('wrapper', 'wrapper-small')}>
                         <div className={cx('inner')}>
-                        <div className={cx('header-logo')}>
-                            <a href={config.routes.home}>
-                                <img
-                                    style={{ height: '100%', padding: '5px 0' }}
-                                    src="https://res.cloudinary.com/di56pogid/image/upload/v1730030954/final_x4gecu.png"
-                                    alt="Ảnh lỗi"
-                                />
-                            </a>
-                        </div>
+                            <div className={cx('header-logo')}>
+                                <a href={config.routes.home}>
+                                    <img
+                                        style={{ height: '100%', padding: '5px 0' }}
+                                        src="https://res.cloudinary.com/di56pogid/image/upload/v1730030954/final_x4gecu.png"
+                                        alt="Ảnh lỗi"
+                                    />
+                                </a>
+                            </div>
                             <div className={cx('header-left', 'header-left-mobile')}>
                                 <div className={cx('header-icon')} onClick={toggleSidebar}>
                                     {sidebarShow ? (
@@ -373,7 +376,6 @@ function Header() {
                                         <FontAwesomeIcon icon={faXmark} />
                                     )}
                                 </div>
-                               
                             </div>
                             <div className={cx('infor-user', 'infor-user-mobile')}>
                                 <div className={cx('header-icon', 'header-menu', 'header-icon-mobile')}>
@@ -396,39 +398,42 @@ function Header() {
                             </div>
                         </div>
                         <div className={cx('search-small')}>
-                            <Search/>           
+                            <Search />
                         </div>
                     </header>
                     {!sidebarShow ? (
-                        <div className={cx('modal','modal-small')}>
-                            <div className={cx('menu')}>
-                                <Menu
-                                    onClick={onClickMenu}
-                                    style={{
-                                        width: 300,
-                                    }}
-                                    mode="inline"
-                                    items={itemsMenu}
-                                />
+                        <div className={cx('modal', 'modal-small')} onClick={handleMenuModal}>
+                            <div style={{ display: 'flex' }}>
+                                <div className={cx('menu')}>
+                                    <Menu
+                                        onClick={onClickMenu}
+                                        style={{
+                                            width: 300,
+                                        }}
+                                        mode="inline"
+                                        items={itemsMenu}
+                                    />
+                                </div>
+                                <div className={cx('modal-right')} onClick={handleMenuModal}></div>
                             </div>
                         </div>
                     ) : null}
                 </>
             </Small>
-                      {/* ******************Giao diện XSmall*********************  */}
-             <XSmall>
+            {/* ******************Giao diện XSmall*********************  */}
+            <XSmall>
                 <>
-                    <header className={cx('wrapper','wrapper-small')}>
+                    <header className={cx('wrapper', 'wrapper-small')}>
                         <div className={cx('inner')}>
-                        <div className={cx('header-logo')}>
-                            <a href={config.routes.home}>
-                                <img
-                                    style={{ height: '100%', padding: '5px 0' }}
-                                    src="https://res.cloudinary.com/di56pogid/image/upload/v1730030954/final_x4gecu.png"
-                                    alt="Ảnh lỗi"
-                                />
-                            </a>
-                        </div>
+                            <div className={cx('header-logo')}>
+                                <a href={config.routes.home}>
+                                    <img
+                                        style={{ height: '100%', padding: '5px 0' }}
+                                        src="https://res.cloudinary.com/di56pogid/image/upload/v1730030954/final_x4gecu.png"
+                                        alt="Ảnh lỗi"
+                                    />
+                                </a>
+                            </div>
                             <div className={cx('header-left', 'header-left-mobile')}>
                                 <div className={cx('header-icon')} onClick={toggleSidebar}>
                                     {sidebarShow ? (
@@ -437,7 +442,6 @@ function Header() {
                                         <FontAwesomeIcon icon={faXmark} />
                                     )}
                                 </div>
-                               
                             </div>
                             <div className={cx('infor-user', 'infor-user-xsmall')}>
                                 <div className={cx('header-icon', 'header-menu', 'header-icon-mobile')}>
@@ -460,20 +464,23 @@ function Header() {
                             </div>
                         </div>
                         <div className={cx('search-small')}>
-                            <Search/>           
+                            <Search />
                         </div>
                     </header>
                     {!sidebarShow ? (
-                        <div className={cx('modal','modal-small')}>
-                            <div className={cx('menu')}>
-                                <Menu
-                                    onClick={onClickMenu}
-                                    style={{
-                                        width: 300,
-                                    }}
-                                    mode="inline"
-                                    items={itemsMenu}
-                                />
+                        <div className={cx('modal', 'modal-small')}>
+                            <div style={{ display: 'flex' }}>
+                                <div className={cx('menu')}>
+                                    <Menu
+                                        onClick={onClickMenu}
+                                        style={{
+                                            width: 300,
+                                        }}
+                                        mode="inline"
+                                        items={itemsMenu}
+                                    />
+                                </div>
+                                <div className={cx('modal-right')} onClick={handleMenuModal}></div>
                             </div>
                         </div>
                     ) : null}

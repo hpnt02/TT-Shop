@@ -11,6 +11,8 @@ import { useLocation } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faCircleDown } from '@fortawesome/free-regular-svg-icons';
 import BreadcrumbMenu from '~/components/Breadcrumb';
+import { ExtraLarge, MobileAndTabletLarge, TabletSmallAndDestopLarge, XSmall } from '~/components/Responsive';
+import SelectItem from '~/components/Select';
 
 const cx = classNames.bind(styles);
 const DinhDangTien = (amount) => {
@@ -125,19 +127,98 @@ function Product() {
             </div>
 
             <BreadcrumbMenu />
-
-            <div className={cx('list-product')}>
-                <div className={cx('danh-muc')}>
-                    <div className={cx('inner')}>
-                        <div className={cx('danhmuc-brand')}>
-                            <span>Danh mục</span>
+            <ExtraLarge>
+                <div className={cx('list-product')}>
+                    <div className={cx('danh-muc')}>
+                        <div className={cx('inner')}>
+                            <div className={cx('danhmuc-brand')}>
+                                <span>Danh mục</span>
+                            </div>
+                            <div>
+                                <RadioItem data={loaisanpham} onClick={handleLaoiSanPham} />
+                            </div>
+                            <div className={cx('danhmuc-brand')}>
+                                <span>Lọc theo giá tiền</span>
+                            </div>
+                            <div style={{ padding: '10px' }}>
+                                <Slider
+                                    range
+                                    step={10}
+                                    defaultValue={[minPrice.GiaBanRa, maxPrice.GiaBanRa]}
+                                    onChangeComplete={onChangeComplete}
+                                    min={minPrice.GiaBanRa} // Giá trị tối thiểu
+                                    max={maxPrice.GiaBanRa} // Giá trị tối đa
+                                />
+                            </div>
+                            <div>
+                                <p className={cx('price')}>
+                                    <span>Giá thấp nhất:</span> {DinhDangTien(giaMin)}đ
+                                </p>
+                                <p className={cx('price')}>
+                                    <span>Giá cao nhất:</span> {DinhDangTien(giaMax)}đ
+                                </p>
+                            </div>
+                            <div className={cx('danhmuc-brand')}>
+                                <span>Thương hiệu</span>
+                            </div>
+                            <div>
+                                <RadioItem data={nhacungcap} onClick={handleNCC} valueDefault={Nhacungcap} />
+                            </div>
                         </div>
-                        <div>
-                            <RadioItem data={loaisanpham} onClick={handleLaoiSanPham} />
+                    </div>
+                    <div>
+                        <div className={cx('sort')}>
+                            <div className={cx('sort-product')}>
+                                <span>Sắp xếp</span>
+                                <RadioItem sort={true} options={options} onClick={handleSortProduct} />
+                            </div>
+                            <div>
+                                <span>Hiển thị</span>
+                                <Space wrap>
+                                    <Select
+                                        suffixIcon={<FontAwesomeIcon icon={faCircleDown} />}
+                                        defaultValue="10"
+                                        style={{
+                                            width: 80,
+                                        }}
+                                        onChange={handleChange}
+                                        options={[
+                                            {
+                                                value: '10',
+                                                label: '10',
+                                            },
+                                            {
+                                                value: '50',
+                                                label: '50',
+                                            },
+                                            {
+                                                value: '100',
+                                                label: '100',
+                                            },
+                                        ]}
+                                    />
+                                </Space>
+                                <span>sản phẩm/trang</span>
+                            </div>
                         </div>
-                        <div className={cx('danhmuc-brand')}>
-                            <span>Lọc theo giá tiền</span>
+                        <ListItem data={newDataSortProduct} pageProduct={pageProduct} />
+                    </div>
+                </div>
+            </ExtraLarge>
+            <MobileAndTabletLarge>
+                <div className={cx('select')}>
+                    <div className={cx('select-item')}>
+                        <div className={cx('select-item__left')}>
+                            <span>Danh mục:</span>
+                            <SelectItem data={loaisanpham} onClick={handleLaoiSanPham} width={210} />
                         </div>
+                        <div className={cx('select-item__left')}>
+                            <span>Thương hiệu:</span>
+                            <SelectItem data={nhacungcap} onClick={handleNCC} valueDefault={Nhacungcap} width={210} />
+                        </div>
+                    </div>
+                    <div className={cx('select-item__right')}>
+                        <span>Lọc theo giá tiền</span>
                         <div style={{ padding: '10px' }}>
                             <Slider
                                 range
@@ -148,24 +229,10 @@ function Product() {
                                 max={maxPrice.GiaBanRa} // Giá trị tối đa
                             />
                         </div>
-                        <div>
-                            <p className={cx('price')}>
-                                <span>Giá thấp nhất:</span> {DinhDangTien(giaMin)}đ
-                            </p>
-                            <p className={cx('price')}>
-                                <span>Giá cao nhất:</span> {DinhDangTien(giaMax)}đ
-                            </p>
-                        </div>
-                        <div className={cx('danhmuc-brand')}>
-                            <span>Thương hiệu</span>
-                        </div>
-                        <div>
-                            <RadioItem data={nhacungcap} onClick={handleNCC} valueDefault={Nhacungcap} />
-                        </div>
                     </div>
                 </div>
-                <div>
-                    <div className={cx('sort')}>
+                <TabletSmallAndDestopLarge>
+                    <div className={cx('sort', 'sort-tablet')}>
                         <div className={cx('sort-product')}>
                             <span>Sắp xếp</span>
                             <RadioItem sort={true} options={options} onClick={handleSortProduct} />
@@ -199,10 +266,50 @@ function Product() {
                             <span>sản phẩm/trang</span>
                         </div>
                     </div>
-
-                    <ListItem data={newDataSortProduct} pageProduct={pageProduct} />
-                </div>
-            </div>
+                </TabletSmallAndDestopLarge>
+                <XSmall>
+                    <div className={cx('sort', 'sort-tablet')}>
+                        <div className={cx('sort-product')}>
+                            <span>Sắp xếp</span>
+                            <SelectItem
+                                data={[]}
+                                newOptions={options}
+                                onClick={handleSortProduct}
+                                valueDefault={sort}
+                            />
+                        </div>
+                        <div>
+                            <span>Hiển thị</span>
+                            <Space wrap>
+                                <Select
+                                    suffixIcon={<FontAwesomeIcon icon={faCircleDown} />}
+                                    defaultValue="10"
+                                    style={{
+                                        width: 80,
+                                    }}
+                                    onChange={handleChange}
+                                    options={[
+                                        {
+                                            value: '10',
+                                            label: '10',
+                                        },
+                                        {
+                                            value: '50',
+                                            label: '50',
+                                        },
+                                        {
+                                            value: '100',
+                                            label: '100',
+                                        },
+                                    ]}
+                                />
+                            </Space>
+                            <span>sản phẩm/trang</span>
+                        </div>
+                    </div>
+                </XSmall>
+                <ListItem data={newDataSortProduct} pageProduct={pageProduct} />
+            </MobileAndTabletLarge>
         </div>
     );
 }

@@ -11,7 +11,14 @@ import { DanhGia, SanPham } from '~/redux/API/api';
 import CarouselItem from '~/components/CarouselItem';
 import Evaluate from '~/components/Evaluate';
 import BreadcrumbMenu from '~/components/Breadcrumb';
-import { ExtraLarge, XSmall } from '~/components/Responsive';
+import {
+    ExtraLarge,
+    Small,
+    TabletAndDestop,
+    TabletAndDestopLarge,
+    TabletSmallAndDestopLarge,
+    XSmall,
+} from '~/components/Responsive';
 
 const conicColors = {
     '0%': 'var(--primary)',
@@ -55,6 +62,23 @@ const contentStyle2 = {
     background: '#364d79',
     width: ' 100%',
     height: '400px',
+};
+
+const contentStyleXSmall = {
+    color: '#fff',
+    textAlign: 'center',
+    background: '#364d79',
+    width: ' 100%',
+    height: '400px',
+};
+
+const CarouselXSmall = {
+    margin: '11px',
+    color: '#fff',
+    textAlign: 'center',
+    background: '#364d79',
+    width: '80%',
+    height: '100px',
 };
 
 const cx = classNames.bind(styles);
@@ -156,72 +180,153 @@ function InforProduct() {
                 </div>
             </div>
             <BreadcrumbMenu />
-            <div className={cx('infor-product')}>
-                <div className={cx('infor-product__left')}>
-                    <div>
-                        <Carousel dotPosition="left" dots={false} autoplay afterChange={onChange} slidesToShow={5}>
-                            <div>
-                                <Image style={contentStyle1} src={id.Image.Image1} alt="Ảnh lỗi" />
-                            </div>
-                            <div>
-                                <Image style={contentStyle1} src={id.Image.Image2} alt="Ảnh lỗi" />
-                            </div>
-                            <div>
-                                <Image style={contentStyle1} src={id.Image.Image3} alt="Ảnh lỗi" />
-                            </div>
-                            <div>
-                                <Image style={contentStyle1} src={id.Image.Image4} alt="Ảnh lỗi" />
-                            </div>
-                            <div>
-                                <Image style={contentStyle1} src={id.Image.Image5} alt="Ảnh lỗi" />
-                            </div>
-                        </Carousel>
-                        <style jsx>{`
-                            .ant-image {
-                                width: 100% !important;
-                            }
-                        `}</style>
-                    </div>
-                    <div>
-                        <Image style={contentStyle2} src={imageCurrent} alt="Ảnh lỗi" />
-                    </div>
-                </div>
-                <div>
-                    <div className={cx('infor-newProduct')}>
-                        <div className={cx('title')}>
-                            <h2>{id.nameProduct}</h2>
+            <TabletSmallAndDestopLarge>
+                <div className={cx('infor-product')}>
+                    <div className={cx('infor-product__left')}>
+                        <div style={{ height: '400px' }}>
+                            <Carousel
+                                id="carousel-infor"
+                                arrows
+                                dotPosition="left"
+                                dots={false}
+                                autoplay
+                                afterChange={onChange}
+                                slidesToShow={5}
+                            >
+                                <div>
+                                    <Image style={contentStyle1} src={id.Image.Image1} alt="Ảnh lỗi" />
+                                </div>
+                                <div>
+                                    <Image style={contentStyle1} src={id.Image.Image2} alt="Ảnh lỗi" />
+                                </div>
+                                <div>
+                                    <Image style={contentStyle1} src={id.Image.Image3} alt="Ảnh lỗi" />
+                                </div>
+                                <div>
+                                    <Image style={contentStyle1} src={id.Image.Image4} alt="Ảnh lỗi" />
+                                </div>
+                                <div>
+                                    <Image style={contentStyle1} src={id.Image.Image5} alt="Ảnh lỗi" />
+                                </div>
+                            </Carousel>
+                            <style jsx>{`
+                                .ant-image {
+                                    width: 100% !important;
+                                }
+                                #carousel-infor.ant-carousel {
+                                    height: 100%;
+                                }
+                                #carousel-infor.ant-carousel .slick-slider {
+                                    height: 100% !important;
+                                }
+                                #carousel-infor.ant-carousel .slick-slider .slick-list {
+                                    height: 100% !important;
+                                }
+                            `}</style>
                         </div>
                         <div>
-                            {id.KhuyenMai !== undefined ? (
-                                <>
-                                    <span className={cx('price-old')}>{DinhDangTien(id.PriceProduct)}đ</span>
-                                    <span className={cx('price-current')}>{DinhDangTien(id.GiaBanRa)}đ</span>
-                                </>
-                            ) : (
-                                <span className={cx('price-current')}>{DinhDangTien(id.GiaBanRa)}</span>
-                            )}
+                            <Image style={contentStyle2} src={imageCurrent} alt="Ảnh lỗi" />
                         </div>
-                        <Rate disabled defaultValue={trungbinhDG} />
-                        <div className={cx('describe')}>
-                            {id.describe?.split('\n').map((line, index) => (
-                                <span key={index}>
-                                    {line} <br />
-                                </span>
-                            ))}
+                    </div>
+                    <div>
+                        <div className={cx('infor-newProduct')}>
+                            <ExtraLarge>
+                                <div className={cx('title')}>
+                                    <h2>{id.nameProduct}</h2>
+                                </div>
+                            </ExtraLarge>
+                            <TabletAndDestop>
+                                <div className={cx('title-large')}>
+                                    <h2>{id.nameProduct}</h2>
+                                </div>
+                            </TabletAndDestop>
+                            <Small>
+                                <div className={cx('title-small')}>
+                                    <h2>{id.nameProduct}</h2>
+                                </div>
+                            </Small>
+
+                            <div>
+                                {id.KhuyenMai !== undefined ? (
+                                    <>
+                                        <span className={cx('price-old')}>{DinhDangTien(id.PriceProduct)}đ</span>
+                                        <span className={cx('price-current')}>{DinhDangTien(id.GiaBanRa)}đ</span>
+                                    </>
+                                ) : (
+                                    <span className={cx('price-current')}>{DinhDangTien(id.GiaBanRa)}</span>
+                                )}
+                            </div>
+                            <Rate disabled defaultValue={trungbinhDG} />
+
+                            <TabletAndDestopLarge>
+                                <div className={cx('describe')}>
+                                    {id.describe?.split('\n').map((line, index) => (
+                                        <span key={index}>
+                                            {line} <br />
+                                        </span>
+                                    ))}
+                                </div>
+                            </TabletAndDestopLarge>
+                            <Small>
+                                <div className={cx('describe', 'describe-small')}>
+                                    {id.describe?.split('\n').map((line, index) => (
+                                        <span key={index}>
+                                            {line} <br />
+                                        </span>
+                                    ))}
+                                </div>
+                            </Small>
+                            <div style={{ display: 'flex', alignItems: 'center' }}>
+                                <FontAwesomeIcon
+                                    icon={faMinus}
+                                    className={cx('icon')}
+                                    onClick={value > 0 ? handleDecrease : undefined}
+                                />
+                                <Input value={value} style={{ width: '20%' }} />
+                                <FontAwesomeIcon icon={faPlus} className={cx('icon')} onClick={handleIncrease} />
+                            </div>
+                            <ButtonCustom primary>Thêm vào giỏ hàng</ButtonCustom>
                         </div>
-                        <div style={{ display: 'flex', alignItems: 'center' }}>
-                            <FontAwesomeIcon
-                                icon={faMinus}
-                                className={cx('icon')}
-                                onClick={value > 0 ? handleDecrease : undefined}
-                            />
-                            <Input value={value} style={{ width: '20%' }} />
-                            <FontAwesomeIcon icon={faPlus} className={cx('icon')} onClick={handleIncrease} />
-                        </div>
-                        <ButtonCustom primary>Thêm vào giỏ hàng</ButtonCustom>
                     </div>
                 </div>
-            </div>
+            </TabletSmallAndDestopLarge>
+            <XSmall>
+                <div className={cx('infor-product__xsmall')}>
+                    <div className={cx('infor-product__img')}>
+                        <div className={cx('infor-product__imgCurrent')}>
+                            <Image style={contentStyleXSmall} src={imageCurrent} alt="Ảnh lỗi" />
+                        </div>
+                        <div className={cx('infor-product__imgCarousel')}>
+                            <Carousel arrows dots={false} autoplay afterChange={onChange} slidesToShow={4}>
+                                <div>
+                                    <Image style={CarouselXSmall} src={id.Image.Image1} alt="Ảnh lỗi" />
+                                </div>
+                                <div>
+                                    <Image style={CarouselXSmall} src={id.Image.Image2} alt="Ảnh lỗi" />
+                                </div>
+                                <div>
+                                    <Image style={CarouselXSmall} src={id.Image.Image3} alt="Ảnh lỗi" />
+                                </div>
+                                <div>
+                                    <Image style={CarouselXSmall} src={id.Image.Image4} alt="Ảnh lỗi" />
+                                </div>
+                                <div>
+                                    <Image style={CarouselXSmall} src={id.Image.Image5} alt="Ảnh lỗi" />
+                                </div>
+                            </Carousel>
+                        </div>
+                    </div>
+                </div>
+            </XSmall>
+            <style jsx>{`
+                .ant-image {
+                    width: 100% !important;
+                }
+                .ant-carousel {
+                    width: 90%;
+                    margin: 0 auto;
+                }
+            `}</style>
             <div className={cx('infor-product-ttsp')}>
                 <Tabs
                     defaultActiveKey="1"
@@ -263,96 +368,209 @@ function InforProduct() {
                             key: '2',
                             children: (
                                 <>
-                                    <div className={cx('evaluate')}>
-                                        <div className={cx('evaluate-left')}>
-                                            {isNaN(trungbinhDG) ? (
-                                                <div>
-                                                    <span>{danhgiasanpham.length} đánh giá sản phẩm</span>
-                                                </div>
-                                            ) : (
-                                                <>
-                                                    <div className={cx('evaluate-number')}>{trungbinhDG}</div>
-                                                    <Rate disabled defaultValue={trungbinhDG} />
+                                    <ExtraLarge>
+                                        <div className={cx('evaluate')}>
+                                            <div className={cx('evaluate-left')}>
+                                                {isNaN(trungbinhDG) ? (
                                                     <div>
                                                         <span>{danhgiasanpham.length} đánh giá sản phẩm</span>
                                                     </div>
-                                                </>
-                                            )}
-                                        </div>
-                                        <div className={cx('evaluate-center')}>
-                                            <Flex gap="small" vertical>
-                                                <div style={{ display: 'flex', alignItems: 'center' }}>
-                                                    <span style={{ paddingRight: '10px' }}>5 </span>
-                                                    <div style={{ width: '70%' }}>
-                                                        <Progress
-                                                            percent={tiledanhgia5}
-                                                            showInfo={false}
-                                                            strokeColor={conicColors}
-                                                        />
+                                                ) : (
+                                                    <>
+                                                        <div className={cx('evaluate-number')}>{trungbinhDG}</div>
+                                                        <Rate disabled defaultValue={trungbinhDG} />
+                                                        <div>
+                                                            <span>{danhgiasanpham.length} đánh giá sản phẩm</span>
+                                                        </div>
+                                                    </>
+                                                )}
+                                            </div>
+                                            <div className={cx('evaluate-center')}>
+                                                <Flex gap="small" vertical>
+                                                    <div style={{ display: 'flex', alignItems: 'center' }}>
+                                                        <span style={{ paddingRight: '10px' }}>5 </span>
+                                                        <div style={{ width: '70%' }}>
+                                                            <Progress
+                                                                percent={tiledanhgia5}
+                                                                showInfo={false}
+                                                                strokeColor={conicColors}
+                                                            />
+                                                        </div>
+                                                        <span style={{ paddingLeft: '10px' }}>
+                                                            ({danhgia5.length}) Rất hài lòng
+                                                        </span>
                                                     </div>
-                                                    <span style={{ paddingLeft: '10px' }}>
-                                                        ({danhgia5.length}) Rất hài lòng
-                                                    </span>
-                                                </div>
-                                                <div style={{ display: 'flex', alignItems: 'center' }}>
-                                                    <span style={{ paddingRight: '10px' }}>4</span>
-                                                    <div style={{ width: '70%' }}>
-                                                        <Progress
-                                                            percent={tiledanhgia4}
-                                                            showInfo={false}
-                                                            strokeColor={conicColors}
-                                                        />
+                                                    <div style={{ display: 'flex', alignItems: 'center' }}>
+                                                        <span style={{ paddingRight: '10px' }}>4</span>
+                                                        <div style={{ width: '70%' }}>
+                                                            <Progress
+                                                                percent={tiledanhgia4}
+                                                                showInfo={false}
+                                                                strokeColor={conicColors}
+                                                            />
+                                                        </div>
+                                                        <span style={{ paddingLeft: '10px' }}>
+                                                            ({danhgia4.length}) Hài lòng
+                                                        </span>
                                                     </div>
-                                                    <span style={{ paddingLeft: '10px' }}>
-                                                        ({danhgia4.length}) Hài lòng
-                                                    </span>
-                                                </div>
-                                                <div style={{ display: 'flex', alignItems: 'center' }}>
-                                                    <span style={{ paddingRight: '10px' }}>3</span>
-                                                    <div style={{ width: '70%' }}>
-                                                        <Progress
-                                                            percent={tiledanhgia3}
-                                                            showInfo={false}
-                                                            strokeColor={conicColors}
-                                                        />
+                                                    <div style={{ display: 'flex', alignItems: 'center' }}>
+                                                        <span style={{ paddingRight: '10px' }}>3</span>
+                                                        <div style={{ width: '70%' }}>
+                                                            <Progress
+                                                                percent={tiledanhgia3}
+                                                                showInfo={false}
+                                                                strokeColor={conicColors}
+                                                            />
+                                                        </div>
+                                                        <span style={{ paddingLeft: '10px' }}>
+                                                            ({danhgia3.length}) Bình thường
+                                                        </span>
                                                     </div>
-                                                    <span style={{ paddingLeft: '10px' }}>
-                                                        ({danhgia3.length}) Bình thường
-                                                    </span>
-                                                </div>
-                                                <div style={{ display: 'flex', alignItems: 'center' }}>
-                                                    <span style={{ paddingRight: '10px' }}>2</span>
-                                                    <div style={{ width: '70%' }}>
-                                                        <Progress
-                                                            percent={tiledanhgia2}
-                                                            showInfo={false}
-                                                            strokeColor={conicColors}
-                                                        />
+                                                    <div style={{ display: 'flex', alignItems: 'center' }}>
+                                                        <span style={{ paddingRight: '10px' }}>2</span>
+                                                        <div style={{ width: '70%' }}>
+                                                            <Progress
+                                                                percent={tiledanhgia2}
+                                                                showInfo={false}
+                                                                strokeColor={conicColors}
+                                                            />
+                                                        </div>
+                                                        <span style={{ paddingLeft: '10px' }}>
+                                                            ({danhgia2.length}) Không hài lòng
+                                                        </span>
                                                     </div>
-                                                    <span style={{ paddingLeft: '10px' }}>
-                                                        ({danhgia2.length}) Không hài lòng
-                                                    </span>
-                                                </div>
-                                                <div style={{ display: 'flex', alignItems: 'center' }}>
-                                                    <span style={{ paddingRight: '10px' }}>1</span>
-                                                    <div style={{ width: '70%' }}>
-                                                        <Progress
-                                                            percent={tiledanhgia1}
-                                                            showInfo={false}
-                                                            strokeColor={conicColors}
-                                                        />
+                                                    <div style={{ display: 'flex', alignItems: 'center' }}>
+                                                        <span style={{ paddingRight: '10px' }}>1</span>
+                                                        <div style={{ width: '70%' }}>
+                                                            <Progress
+                                                                percent={tiledanhgia1}
+                                                                showInfo={false}
+                                                                strokeColor={conicColors}
+                                                            />
+                                                        </div>
+                                                        <span style={{ paddingLeft: '10px' }}>
+                                                            ({danhgia1.length}) Rất tệ
+                                                        </span>
                                                     </div>
-                                                    <span style={{ paddingLeft: '10px' }}>
-                                                        ({danhgia1.length}) Rất tệ
-                                                    </span>
-                                                </div>
-                                            </Flex>
-                                        </div>
+                                                </Flex>
+                                            </div>
 
-                                        <div className={cx('evaluate-right')}>
+                                            <div className={cx('evaluate-right')}>
+                                                {sanPhamTrung ? (
+                                                    <div>
+                                                        <span style={{ fontSize: '18px' }}>
+                                                            Để lại đánh giá của bạn!
+                                                        </span>
+                                                        <ButtonCustom primary onClick={handleEvaluate}>
+                                                            Viết đánh giá
+                                                        </ButtonCustom>
+                                                    </div>
+                                                ) : (
+                                                    <div>
+                                                        <span
+                                                            style={{
+                                                                fontSize: '18px',
+                                                                display: 'flex',
+                                                                textAlign: 'center',
+                                                            }}
+                                                        >
+                                                            Bạn cần phải mua sản phẩm mới được đánh giá!
+                                                        </span>
+                                                    </div>
+                                                )}
+                                            </div>
+                                        </div>
+                                    </ExtraLarge>
+                                    <TabletAndDestop>
+                                        <div className={cx('evaluateTableDes')}>
+                                            <div className={cx('evaluate-left')}>
+                                                {isNaN(trungbinhDG) ? (
+                                                    <div>
+                                                        <span>{danhgiasanpham.length} đánh giá sản phẩm</span>
+                                                    </div>
+                                                ) : (
+                                                    <>
+                                                        <div className={cx('evaluate-number')}>{trungbinhDG}</div>
+                                                        <Rate disabled defaultValue={trungbinhDG} />
+                                                        <div>
+                                                            <span>{danhgiasanpham.length} đánh giá sản phẩm</span>
+                                                        </div>
+                                                    </>
+                                                )}
+                                            </div>
+                                            <div className={cx('evaluate-center')}>
+                                                <Flex gap="small" vertical>
+                                                    <div style={{ display: 'flex', alignItems: 'center' }}>
+                                                        <span style={{ paddingRight: '10px' }}>5 </span>
+                                                        <div style={{ width: '70%' }}>
+                                                            <Progress
+                                                                percent={tiledanhgia5}
+                                                                showInfo={false}
+                                                                strokeColor={conicColors}
+                                                            />
+                                                        </div>
+                                                        <span style={{ paddingLeft: '10px' }}>
+                                                            ({danhgia5.length}) Rất hài lòng
+                                                        </span>
+                                                    </div>
+                                                    <div style={{ display: 'flex', alignItems: 'center' }}>
+                                                        <span style={{ paddingRight: '10px' }}>4</span>
+                                                        <div style={{ width: '70%' }}>
+                                                            <Progress
+                                                                percent={tiledanhgia4}
+                                                                showInfo={false}
+                                                                strokeColor={conicColors}
+                                                            />
+                                                        </div>
+                                                        <span style={{ paddingLeft: '10px' }}>
+                                                            ({danhgia4.length}) Hài lòng
+                                                        </span>
+                                                    </div>
+                                                    <div style={{ display: 'flex', alignItems: 'center' }}>
+                                                        <span style={{ paddingRight: '10px' }}>3</span>
+                                                        <div style={{ width: '70%' }}>
+                                                            <Progress
+                                                                percent={tiledanhgia3}
+                                                                showInfo={false}
+                                                                strokeColor={conicColors}
+                                                            />
+                                                        </div>
+                                                        <span style={{ paddingLeft: '10px' }}>
+                                                            ({danhgia3.length}) Bình thường
+                                                        </span>
+                                                    </div>
+                                                    <div style={{ display: 'flex', alignItems: 'center' }}>
+                                                        <span style={{ paddingRight: '10px' }}>2</span>
+                                                        <div style={{ width: '70%' }}>
+                                                            <Progress
+                                                                percent={tiledanhgia2}
+                                                                showInfo={false}
+                                                                strokeColor={conicColors}
+                                                            />
+                                                        </div>
+                                                        <span style={{ paddingLeft: '10px' }}>
+                                                            ({danhgia2.length}) Không hài lòng
+                                                        </span>
+                                                    </div>
+                                                    <div style={{ display: 'flex', alignItems: 'center' }}>
+                                                        <span style={{ paddingRight: '10px' }}>1</span>
+                                                        <div style={{ width: '70%' }}>
+                                                            <Progress
+                                                                percent={tiledanhgia1}
+                                                                showInfo={false}
+                                                                strokeColor={conicColors}
+                                                            />
+                                                        </div>
+                                                        <span style={{ paddingLeft: '10px' }}>
+                                                            ({danhgia1.length}) Rất tệ
+                                                        </span>
+                                                    </div>
+                                                </Flex>
+                                            </div>
+                                        </div>
+                                        <div className={cx('comment-evaluate')}>
                                             {sanPhamTrung ? (
                                                 <div>
-                                                    <span style={{ fontSize: '18px' }}>Để lại đánh giá của bạn!</span>
                                                     <ButtonCustom primary onClick={handleEvaluate}>
                                                         Viết đánh giá
                                                     </ButtonCustom>
@@ -371,7 +589,227 @@ function InforProduct() {
                                                 </div>
                                             )}
                                         </div>
-                                    </div>
+                                    </TabletAndDestop>
+                                    <Small>
+                                        <div className={cx('evaluateTableDes')}>
+                                            <div className={cx('evaluate-left')}>
+                                                {isNaN(trungbinhDG) ? (
+                                                    <div>
+                                                        <span>{danhgiasanpham.length} đánh giá sản phẩm</span>
+                                                    </div>
+                                                ) : (
+                                                    <>
+                                                        <div className={cx('evaluate-number')}>{trungbinhDG}</div>
+                                                        <Rate disabled defaultValue={trungbinhDG} />
+                                                        <div>
+                                                            <span>{danhgiasanpham.length} đánh giá sản phẩm</span>
+                                                        </div>
+                                                    </>
+                                                )}
+                                            </div>
+                                            <div className={cx('evaluate-center')}>
+                                                <Flex gap="small" vertical>
+                                                    <div style={{ display: 'flex', alignItems: 'center' }}>
+                                                        <span style={{ paddingRight: '10px' }}>5 </span>
+                                                        <div style={{ width: '57%' }}>
+                                                            <Progress
+                                                                percent={tiledanhgia5}
+                                                                showInfo={false}
+                                                                strokeColor={conicColors}
+                                                            />
+                                                        </div>
+                                                        <span style={{ paddingLeft: '10px' }}>
+                                                            ({danhgia5.length}) Rất hài lòng
+                                                        </span>
+                                                    </div>
+                                                    <div style={{ display: 'flex', alignItems: 'center' }}>
+                                                        <span style={{ paddingRight: '10px' }}>4</span>
+                                                        <div style={{ width: '57%' }}>
+                                                            <Progress
+                                                                percent={tiledanhgia4}
+                                                                showInfo={false}
+                                                                strokeColor={conicColors}
+                                                            />
+                                                        </div>
+                                                        <span style={{ paddingLeft: '10px' }}>
+                                                            ({danhgia4.length}) Hài lòng
+                                                        </span>
+                                                    </div>
+                                                    <div style={{ display: 'flex', alignItems: 'center' }}>
+                                                        <span style={{ paddingRight: '10px' }}>3</span>
+                                                        <div style={{ width: '57%' }}>
+                                                            <Progress
+                                                                percent={tiledanhgia3}
+                                                                showInfo={false}
+                                                                strokeColor={conicColors}
+                                                            />
+                                                        </div>
+                                                        <span style={{ paddingLeft: '10px' }}>
+                                                            ({danhgia3.length}) Bình thường
+                                                        </span>
+                                                    </div>
+                                                    <div style={{ display: 'flex', alignItems: 'center' }}>
+                                                        <span style={{ paddingRight: '10px' }}>2</span>
+                                                        <div style={{ width: '57%' }}>
+                                                            <Progress
+                                                                percent={tiledanhgia2}
+                                                                showInfo={false}
+                                                                strokeColor={conicColors}
+                                                            />
+                                                        </div>
+                                                        <span style={{ paddingLeft: '10px' }}>
+                                                            ({danhgia2.length}) Không hài lòng
+                                                        </span>
+                                                    </div>
+                                                    <div style={{ display: 'flex', alignItems: 'center' }}>
+                                                        <span style={{ paddingRight: '10px' }}>1</span>
+                                                        <div style={{ width: '57%' }}>
+                                                            <Progress
+                                                                percent={tiledanhgia1}
+                                                                showInfo={false}
+                                                                strokeColor={conicColors}
+                                                            />
+                                                        </div>
+                                                        <span style={{ paddingLeft: '10px' }}>
+                                                            ({danhgia1.length}) Rất tệ
+                                                        </span>
+                                                    </div>
+                                                </Flex>
+                                            </div>
+                                        </div>
+                                        <div className={cx('comment-evaluate')}>
+                                            {sanPhamTrung ? (
+                                                <div>
+                                                    <ButtonCustom primary onClick={handleEvaluate}>
+                                                        Viết đánh giá
+                                                    </ButtonCustom>
+                                                </div>
+                                            ) : (
+                                                <div>
+                                                    <span
+                                                        style={{
+                                                            fontSize: '18px',
+                                                            display: 'flex',
+                                                            textAlign: 'center',
+                                                        }}
+                                                    >
+                                                        Bạn cần phải mua sản phẩm mới được đánh giá!
+                                                    </span>
+                                                </div>
+                                            )}
+                                        </div>
+                                    </Small>
+                                    <XSmall>
+                                        <div>
+                                            <div className={cx('evaluate-left')}>
+                                                {isNaN(trungbinhDG) ? (
+                                                    <div>
+                                                        <span>{danhgiasanpham.length} đánh giá sản phẩm</span>
+                                                    </div>
+                                                ) : (
+                                                    <>
+                                                        <div className={cx('evaluate-number')}>{trungbinhDG}</div>
+                                                        <Rate disabled defaultValue={trungbinhDG} />
+                                                        <div>
+                                                            <span>{danhgiasanpham.length} đánh giá sản phẩm</span>
+                                                        </div>
+                                                    </>
+                                                )}
+                                            </div>
+                                            <div className={cx('evaluate-center')}>
+                                                <div>
+                                                    <Flex gap="small" vertical>
+                                                        <div style={{ display: 'flex', alignItems: 'center' }}>
+                                                            <span style={{ paddingRight: '10px' }}>5 </span>
+                                                            <div style={{ width: '50%' }}>
+                                                                <Progress
+                                                                    percent={tiledanhgia5}
+                                                                    showInfo={false}
+                                                                    strokeColor={conicColors}
+                                                                />
+                                                            </div>
+                                                            <span style={{ paddingLeft: '10px' }}>
+                                                                ({danhgia5.length}) Rất hài lòng
+                                                            </span>
+                                                        </div>
+                                                        <div style={{ display: 'flex', alignItems: 'center' }}>
+                                                            <span style={{ paddingRight: '10px' }}>4</span>
+                                                            <div style={{ width: '50%' }}>
+                                                                <Progress
+                                                                    percent={tiledanhgia4}
+                                                                    showInfo={false}
+                                                                    strokeColor={conicColors}
+                                                                />
+                                                            </div>
+                                                            <span style={{ paddingLeft: '10px' }}>
+                                                                ({danhgia4.length}) Hài lòng
+                                                            </span>
+                                                        </div>
+                                                        <div style={{ display: 'flex', alignItems: 'center' }}>
+                                                            <span style={{ paddingRight: '10px' }}>3</span>
+                                                            <div style={{ width: '50%' }}>
+                                                                <Progress
+                                                                    percent={tiledanhgia3}
+                                                                    showInfo={false}
+                                                                    strokeColor={conicColors}
+                                                                />
+                                                            </div>
+                                                            <span style={{ paddingLeft: '10px' }}>
+                                                                ({danhgia3.length}) Bình thường
+                                                            </span>
+                                                        </div>
+                                                        <div style={{ display: 'flex', alignItems: 'center' }}>
+                                                            <span style={{ paddingRight: '10px' }}>2</span>
+                                                            <div style={{ width: '50%' }}>
+                                                                <Progress
+                                                                    percent={tiledanhgia2}
+                                                                    showInfo={false}
+                                                                    strokeColor={conicColors}
+                                                                />
+                                                            </div>
+                                                            <span style={{ paddingLeft: '10px' }}>
+                                                                ({danhgia2.length}) Không hài lòng
+                                                            </span>
+                                                        </div>
+                                                        <div style={{ display: 'flex', alignItems: 'center' }}>
+                                                            <span style={{ paddingRight: '10px' }}>1</span>
+                                                            <div style={{ width: '50%' }}>
+                                                                <Progress
+                                                                    percent={tiledanhgia1}
+                                                                    showInfo={false}
+                                                                    strokeColor={conicColors}
+                                                                />
+                                                            </div>
+                                                            <span style={{ paddingLeft: '10px' }}>
+                                                                ({danhgia1.length}) Rất tệ
+                                                            </span>
+                                                        </div>
+                                                    </Flex>
+                                                </div>
+                                            </div>
+                                            <div className={cx('comment-evaluate')}>
+                                                {sanPhamTrung ? (
+                                                    <div>
+                                                        <ButtonCustom primary onClick={handleEvaluate}>
+                                                            Viết đánh giá
+                                                        </ButtonCustom>
+                                                    </div>
+                                                ) : (
+                                                    <div>
+                                                        <span
+                                                            style={{
+                                                                fontSize: '18px',
+                                                                display: 'flex',
+                                                                textAlign: 'center',
+                                                            }}
+                                                        >
+                                                            Bạn cần phải mua sản phẩm mới được đánh giá!
+                                                        </span>
+                                                    </div>
+                                                )}
+                                            </div>
+                                        </div>
+                                    </XSmall>
                                     <div>
                                         <Evaluate onClick={handleCancel} OpenEvaluate={openEvaluate} sanpham={id._id} />
                                     </div>

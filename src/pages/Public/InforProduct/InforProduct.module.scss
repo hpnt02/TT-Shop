@@ -142,3 +142,42 @@
     font-style: italic;
     padding-top: 10px;
 }
+
+//========================Large========================
+.title-large {
+    margin-bottom: 15px;
+    font-size: 16px;
+}
+
+//==========================Small============================
+.title-small {
+    font-size: 15px;
+    margin-bottom: 13px;
+}
+
+.describe-small {
+    font-size: 16px !important;
+}
+
+//==========================XSmall====================================
+.infor-product__img {
+    width: 100%;
+}
+
+.infor-product__imgCurrent {
+    width: 90%;
+    margin: 0 auto;
+}
+
+//====================Table And Destop=======================
+.evaluateTableDes {
+    display: grid;
+    grid-template-columns: 35% 65%;
+    margin: 10px 0;
+}
+
+.comment-evaluate {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
